@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule } from '@angular/material/card';
+import { MatRadioModule} from '@angular/material/radio';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -19,7 +22,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +35,10 @@ const routes: Routes = [
     // MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
-    // MatCardModule,
+    MatIconModule,
+    MatCardModule,
     // MatSelectModule,
-    // MatRadioModule
+    MatRadioModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'auto'}}

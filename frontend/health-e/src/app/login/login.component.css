@@ -20,17 +20,15 @@
 }
 
 .button {
-    margin-left: 45%;
+    margin-left: 25%;
     margin-top: 2%;
+    /* cursor: pointer; */
+    /* background: #002B5B; */
+    /* color: white; */
 }
-
-/* .inputForm {
-    height: 100%;
+.formClass{
+    margin-left: 20%;
 }
-
-.outline {
-   height:4000%;
-} */
 
 .mat-radio-checked {
     color: purple;

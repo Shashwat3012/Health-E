@@ -15,9 +15,11 @@ roles = ['Patient', 'Doctor'];
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
+    role: new FormControl('')
   });
 
   submit() {
-    console.log("hello")
+    console.log("hello");
+  //  console.log()
   }
 }
