@@ -1,0 +1,41 @@
+.patient {
+    background-color: #002B5B;
+}
+
+.hospital {
+    background-color: #002B5B;
+}
+
+.example-button-row {
+    /*align-items: center;*/
+    margin-left: 45%;
+    margin-top: 20%;
+}
+
+.login {
+    background-color: #8FE3CF;
+    width: 30%;
+    margin-left: 38%;
+    margin-top: 15%;
+}
+
+.button {
+    margin-left: 45%;
+    margin-top: 2%;
+}
+
+/* .inputForm {
+    height: 100%;
+}
+
+.outline {
+   height:4000%;
+} */
+
+.mat-radio-checked {
+    color: purple;
+}
+
+.mat-radio-inner-circle {
+    background: purple;
+}
