@@ -12,10 +12,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule } from '@angular/material/card';
 import { MatRadioModule} from '@angular/material/radio';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: 'login' }
+  { path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: 'register' }
   //{ path: 'second-component', component: SecondComponent },
 ];
 
@@ -23,7 +25,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
