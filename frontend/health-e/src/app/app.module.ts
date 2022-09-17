@@ -13,11 +13,15 @@ import {MatCardModule } from '@angular/material/card';
 import { MatRadioModule} from '@angular/material/radio';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { HeaderComponent } from './header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path: '', redirectTo: 'register', pathMatch: 'full' }
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent}
   //{ path: 'second-component', component: SecondComponent },
 ];
 
@@ -26,7 +30,8 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,9 @@ const routes: Routes = [
     MatIconModule,
     MatCardModule,
     // MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'auto'}}
