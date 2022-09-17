@@ -6,22 +6,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule } from '@angular/material/card';
-import { MatRadioModule} from '@angular/material/radio';
-import { HomeComponent } from './home/home.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatRadioModule } from '@angular/material/radio';
+import { HomeComponent, PatientInfoDialog } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-
+import {  MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
+  { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: 'register', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent}
+  { path: 'home', component: HomeComponent }
   //{ path: 'second-component', component: SecondComponent },
 ];
 
@@ -31,7 +32,8 @@ const routes: Routes = [
     LoginComponent,
     HomeComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    PatientInfoDialog
   ],
   imports: [
     BrowserModule,
@@ -48,10 +50,12 @@ const routes: Routes = [
     // MatSelectModule,
     MatRadioModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'auto'}}
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }
   ],
   bootstrap: [AppComponent]
 })
