@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 roles = ['Patient', 'Doctor'];
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,7 +20,7 @@ roles = ['Patient', 'Doctor'];
   });
 
   submit() {
-    console.log("hello");
+    this.router.navigate(['/home']);
   //  console.log()
   }
 }
