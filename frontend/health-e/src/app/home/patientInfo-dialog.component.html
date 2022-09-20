@@ -13,19 +13,31 @@
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <mat-label>Username</mat-label>
-                    <input matInput formControlName="username">
+                    <mat-label>Blood Group</mat-label>
+                    <input matInput formControlName="bloodgroup">
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <mat-label>Password</mat-label>
-                    <input type="password" matInput formControlName="password">
+                    <mat-label>Allergies</mat-label>
+                    <input matInput formControlName="allergies">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Diseases</mat-label>
+                    <input matInput formControlName="diseases">
                     <mat-icon matSuffix>fingerprint</mat-icon>
-                </mat-form-field> &nbsp;
-                <mat-radio-group aria-label="Select an option" formControlName="role">
-                    <mat-radio-button value="Patient">Patient</mat-radio-button> &nbsp;&nbsp;
-                    <mat-radio-button value="Doctor">Doctor</mat-radio-button>
-                </mat-radio-group>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Injury History</mat-label>
+                    <input matInput formControlName="injuryhistory">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Medication</mat-label>
+                    <input matInput formControlName="medication">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+                
                 <div class="button">
                     <button mat-raised-button class="button" (click)="submit()">Submit</button>
                     <button mat-raised-button class="button" (click)="close()">Close</button>
