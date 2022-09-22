@@ -12,6 +12,10 @@ export class UserService{
     }
 
     register(user:any):Observable<any>{
-        return this.http.post('http://localhost:8080/register',user,this.httpOptions)
+        return this.http.post('http://localhost:8080/register',user,{ ...this.httpOptions, responseType: 'text' })
+    }
+
+    login(user:any):Observable<any>{
+        return this.http.post('http://localhost:8080/login',user,{ ...this.httpOptions, responseType: 'text' })
     }
 }
