@@ -18,22 +18,27 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import {  MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DoctorDashboardComponent, DoctorRequestDialog } from './doctor-dashboard/doctor-dashboard.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: 'register', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent }
+  { path: 'home', component: HomeComponent },
   //{ path: 'second-component', component: SecondComponent },
+  { path: 'doctor-dashboard', component: DoctorDashboardComponent}
 ];
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LoginComponent,
     HomeComponent,
     RegisterComponent,
     HeaderComponent,
-    PatientInfoDialog
+    PatientInfoDialog,
+    DoctorDashboardComponent,
+    DoctorRequestDialog
   ],
   imports: [
     BrowserModule,
