@@ -1,9 +1,6 @@
 package com.example.healthe.data.request;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
-public class doctorRequest {
+public class DoctorRequest {
 
     private  int requestId;
 
@@ -18,7 +15,7 @@ public class doctorRequest {
     private String status;
 
 
-    public doctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
+    public DoctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
         this.requestId = requestId;
         this.UUID = UUID;
         this.reason = reason;

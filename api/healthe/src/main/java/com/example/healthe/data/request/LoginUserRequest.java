@@ -1,11 +1,11 @@
 package com.example.healthe.data.request;
 
-public class UserRequest {
+public class LoginUserRequest {
     private String userName;
     private String role;
     private String password;
 
-    public UserRequest(String userName, String role, String password) {
+    public LoginUserRequest(String userName, String role, String password) {
         this.userName = userName;
         this.role = role;
         this.password = password;
