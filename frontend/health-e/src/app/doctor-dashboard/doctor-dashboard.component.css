@@ -1,5 +1,5 @@
 .button{
-    width: 30%;
+    width: 36%;
     height: 25%;
     margin-left: 18%;
     margin-right: 2%;
@@ -8,4 +8,7 @@
 
 .formClass{
     margin-left: 20%;
+}
+.formFieldClass{
+    width:100%;
 }

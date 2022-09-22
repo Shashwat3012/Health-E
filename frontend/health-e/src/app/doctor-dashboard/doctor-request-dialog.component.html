@@ -1,36 +1,31 @@
 <div>
-    <mat-card class="login">
-        <mat-card-content>
+    
             <form [formGroup]="form" (ngSubmit)="submit()" class="formClass">
-                <mat-form-field appearance="outline">
-                    <mat-label>Request id</mat-label>
-                    <input matInput formControlName="firstName">
+               
+                <mat-form-field appearance="outline" class="formFieldClass">
+                    <mat-label>Patient UUID</mat-label>
+                    <input matInput formControlName="patientid">
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>UUID</mat-label>
-                    <input matInput formControlName="lastName">
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="formFieldClass">
                     <mat-label>Doctor id</mat-label>
-                    <input matInput formControlName="bloodgroup">
+                    <input matInput formControlName="doctorid">
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="formFieldClass">
                     <mat-label>Reason</mat-label>
-                    <input matInput formControlName="allergies">
-                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <input matInput formControlName="reason">
+                    <mat-icon matSuffix>help</mat-icon>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="formFieldClass">
                     <mat-label>Date</mat-label>
-                    <input matInput formControlName="diseases">
-                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <input matInput formControlName="date">
+                    <mat-icon matSuffix>today</mat-icon>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="formFieldClass">
                     <mat-label>Status</mat-label>
-                    <input matInput formControlName="injuryhistory">
-                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <input matInput formControlName="status">
+                    <mat-icon matSuffix>data_usage</mat-icon>
                 </mat-form-field>
                 <!-- <mat-form-field appearance="outline">
                     <mat-label>Medication</mat-label>
@@ -43,6 +38,5 @@
                     <button mat-raised-button class="button" (click)="close()">Close</button>
                 </div>
             </form>
-        </mat-card-content>
-    </mat-card>
+        
 </div>

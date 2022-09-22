@@ -36,11 +36,11 @@ export class DoctorRequestDialog implements OnInit {
   ngOnInit(): void {
   }
   form: FormGroup = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    username: new FormControl(''),
-    password: new FormControl(''),
-    role: new FormControl('')
+    patientid: new FormControl(''),
+    doctorid: new FormControl(''),
+    reason: new FormControl(''),
+    date: new FormControl(''),
+    status: new FormControl('')
   });
 
   submit() {
