@@ -21,9 +21,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String loginUser(@RequestBody LoginUserRequest userRequest){
-       // Optional<User> user = userRepo.findByUserName(userRequest.getUserName());
-        //if user not null
-        return "";
+        return userService.loginUser(userRequest);
     }
 
     @PostMapping("/register")

@@ -19,6 +19,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import {  MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DoctorDashboardComponent, DoctorRequestDialog } from './doctor-dashboard/doctor-dashboard.component';
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -57,10 +59,11 @@ const routes: Routes = [
     MatToolbarModule,
     MatMenuModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule 
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }, UserService
   ],
   bootstrap: [AppComponent]
 })
