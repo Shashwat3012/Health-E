@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Form } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../services/user.service';
 
@@ -12,8 +12,8 @@ export class HomeComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
+
 
   openDialog() {
     this.dialog.open(PatientInfoDialog, {
@@ -63,6 +63,7 @@ export class PatientInfoDialog implements OnInit {
     }
     this.userService.submitPatientData(user).subscribe((response) => {
       console.log(response);
+      this.dialogRef.close();
     })
   }
 

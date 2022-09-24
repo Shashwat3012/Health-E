@@ -6,7 +6,7 @@ public class PatientInfoRequest {
 
     private final String patientId;
 
-    private final String DOB;
+    private final String dob;
 
     private final float height;
 
@@ -26,7 +26,7 @@ public class PatientInfoRequest {
                               String allergies, String medication, String disease, String bloodGroup, String injuryHistory) {
         this.patientName = patientName;
         this.patientId = patientId;
-        this.DOB = DOB;
+        this.dob = DOB;
         this.height = height;
         this.weight = weight;
         this.allergies = allergies;
@@ -45,7 +45,7 @@ public class PatientInfoRequest {
     }
 
     public String getDOB() {
-        return DOB;
+        return dob;
     }
 
     public float getHeight() {

@@ -1,7 +1,13 @@
-
 <app-header></app-header>
 <div>
-    <mat-icon mat-fab 
-    style="float:right;height:60px;width:60px;font-size: 3rem;cursor:pointer;" matTooltip="Request Data"
-    matTooltipPosition="left" (click)="openDialog()">note_add</mat-icon>
+    <mat-icon mat-fab style="float:right;height:60px;width:60px;font-size: 3rem;cursor:pointer;"
+        matTooltip="Request Data" matTooltipPosition="left" (click)="openDialog()">note_add</mat-icon>
+    <form [formGroup]="form" class="formClass">
+        <mat-form-field appearance="outline">
+            <mat-label>Search Patient</mat-label>
+            <input matInput formControlName="patientId">
+            <!-- <button></button> -->
+            <mat-icon matSuffix (click)="fetchPatient()">search</mat-icon>
+        </mat-form-field> &nbsp;
+    </form>
 </div>

@@ -14,21 +14,25 @@ export class DoctorDashboardComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
+  form: FormGroup = new FormGroup({
+    patientId: new FormControl(''),
+  });
+
   ngOnInit(): void {
     this.fetchPatient();
   }
-  fetchPatient(){
-    const patientId = '1bb37d';
+  fetchPatient() {
+    const patientId = this.form.get('patientId')!.value;
     this.userService.fetchPatient(patientId).subscribe((response) => {
       console.log(response);
-  })
-}
+    })
+  }
 
-  openDialog(){
-   this.dialog.open(DoctorRequestDialog, {
-    height: '600px',
-    width: '600px',
-   });
+  openDialog() {
+    this.dialog.open(DoctorRequestDialog, {
+      height: '600px',
+      width: '600px',
+    });
   }
 
 }
@@ -59,13 +63,12 @@ export class DoctorRequestDialog implements OnInit {
       date: this.form.get('date')!.value,
       status: "Pending"
     }
-
     this.userService.requestData(request).subscribe((response) => {
       console.log(response);
-  })
+    })
   }
 
-  close(){
+  close() {
     this.dialogRef.close();
   }
 }
