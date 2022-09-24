@@ -1,9 +1,11 @@
 <div>
     <mat-card class="header">
         <mat-toolbar style="background-color: #FFB200;">
-            <span>Patient Portal</span>
+            <span *ngIf="role == 'Patient'">Patient Portal</span>
+            <span *ngIf="role == 'Doctor'">Doctor Portal</span>
             <span class="example-spacer"></span>
-            <mat-icon style="cursor: pointer;font-size: 1.6rem;width:4%;" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+            <mat-icon style="cursor: pointer;font-size: 1.6rem;width:4%;" [matMenuTriggerFor]="menu">account_circle
+            </mat-icon>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item (click)="logout()">
                     <mat-icon>power_settings_new</mat-icon>Logout

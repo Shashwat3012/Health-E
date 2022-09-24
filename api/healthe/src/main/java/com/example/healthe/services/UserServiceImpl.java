@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class UserServiceImpl implements User {
+public class UserServiceImpl implements User{
     @Autowired
     private UserRepository userRepo;
     @Autowired
@@ -60,8 +60,22 @@ public class UserServiceImpl implements User {
     }
 
     @Override
-    public List<PatientInfo> getPatientInfo() {
-        List<PatientInfo> patientList =  patientRepo.findAll();
-        return patientList;
+    public PatientInfoRequest getPatientInfo(String patientId) throws InterruptedException {
+        PatientInfo patientList =  patientRepo.findByPatientId(patientId);
+        PatientInfoRequest pRequest = new PatientInfoRequest(
+                patientList.getPatientName(),
+                patientList.getPatientId(),
+                patientList.getDOB(),
+                patientList.getHeight(),
+                patientList.getWeight(),
+                patientList.getAllergies(),
+                patientList.getMedication(),
+                patientList.getDisease(),
+                patientList.getBloodGroup(),
+                patientList.getInjuryHistory()
+        );
+        return pRequest;
     }
+
+
 }

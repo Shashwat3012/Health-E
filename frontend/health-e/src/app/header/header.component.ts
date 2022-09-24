@@ -7,13 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  role = sessionStorage.getItem('role');
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    if (sessionStorage.getItem('role') != null) {
+      this.role = sessionStorage.getItem('role');
+    }
   }
 
-  logout(){
+  logout() {
     this.router.navigate(['/login'])
   }
 

@@ -7,10 +7,7 @@ import com.example.healthe.data.request.RegisterUserRequest;
 import com.example.healthe.entity.PatientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +39,12 @@ public class UserController {
     }
 
     @GetMapping("/patientInfo")
-        public List<PatientInfo> getPatientInfo(){
-        return userService.getPatientInfo();
+        public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
+        try{
+            return userService.getPatientInfo(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+
     }
 }

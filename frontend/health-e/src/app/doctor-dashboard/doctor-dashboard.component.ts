@@ -12,13 +12,16 @@ import { UserService } from '../services/user.service';
 })
 export class DoctorDashboardComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private userService: UserService) { }
 
   ngOnInit(): void {
-    
+    this.fetchPatient();
   }
-  approved(){
-    
+  fetchPatient(){
+    const patientId = '1bb37d';
+    this.userService.fetchPatient(patientId).subscribe((response) => {
+      console.log(response);
+  })
 }
 
   openDialog(){

@@ -18,5 +18,5 @@ public interface User {
 
     String requestData(DoctorRequest doctorRequest);
 
-    List<PatientInfo> getPatientInfo();
+    PatientInfoRequest getPatientInfo(String patientId) throws InterruptedException;
 }

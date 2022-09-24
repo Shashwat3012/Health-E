@@ -9,7 +9,7 @@ public class PatientInfo {
     @Column(name = "patient_name")
     private String patientName;
     
-    @Column(name = "uuid")
+    @Column(name = "patientId")
     private String patientId;
 
     @Column(name = "dob")
@@ -55,6 +55,50 @@ public class PatientInfo {
     }
 
     public PatientInfo() {
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public String getAllergies() {
+        return allergies;
+    }
+
+    public String getMedication() {
+        return medication;
+    }
+
+    public String getDisease() {
+        return disease;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public String getInjuryHistory() {
+        return injuryHistory;
+    }
+
+    public long getId() {
+        return id;
     }
 
     @Override

@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(user).subscribe((response) => {
       console.log(response);
       sessionStorage.setItem("patientId", response);
+      sessionStorage.setItem("role", user.role);
       if (user.role == "Patient") {
         this.router.navigate(['/home']);
       }
