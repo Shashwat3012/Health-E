@@ -1,23 +1,26 @@
 package com.example.healthe.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "users")
 public class User {
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name="user_name")
+    @Column(name = "user_name")
     private String username;
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
-    @Column(name="role")
+    @Column(name = "role")
     private String role;
     @Id
-    @Column(name="uuid")
+    @Column(name = "uuid")
     private String uuid;
 
     public User() {

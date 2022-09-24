@@ -7,39 +7,39 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "patient_info")
-public class patientInfo {
+public class PatientInfo {
     @Column(name = "patient_name")
-    private  String patientName;
+    private String patientName;
 
     @Id
     @Column(name = "uuid")
-    private  int UUID;
+    private String patientId;
 
     @Column(name = "dob")
     private String DOB;
 
     @Column(name = "height")
-    private  float height;
+    private float height;
 
-    @Column(name =  "weight")
+    @Column(name = "weight")
     private float weight;
 
-    @Column(name =  "allergies")
-    private  String allergies;
+    @Column(name = "allergies")
+    private String allergies;
 
     @Column(name = "medication")
-    private  String medication;
+    private String medication;
 
     @Column(name = "disease")
-    private  String disease;
+    private String disease;
 
     @Column(name = "blood_group")
     private String bloodGroup;
 
 
-    public patientInfo(String patientName, int UUID, String DOB, float height, float weight, String allergies, String medication, String disease, String bloodGroup) {
+    public PatientInfo(String patientName, String patientId, String DOB, float height, float weight, String allergies, String medication, String disease, String bloodGroup) {
         this.patientName = patientName;
-        this.UUID = UUID;
+        this.patientId = patientId;
         this.DOB = DOB;
         this.height = height;
         this.weight = weight;
@@ -57,12 +57,12 @@ public class patientInfo {
         this.patientName = patientName;
     }
 
-    public int getUUID() {
-        return UUID;
+    public String getUUID() {
+        return patientId;
     }
 
-    public void setUUID(int UUID) {
-        this.UUID = UUID;
+    public void setUUID(String patientId) {
+        this.patientId = patientId;
     }
 
     public String getDOB() {
@@ -125,7 +125,7 @@ public class patientInfo {
     public String toString() {
         return "patientInfo{" +
                 "patientName='" + patientName + '\'' +
-                ", UUID=" + UUID +
+                ", patientId=" + patientId +
                 ", DOB='" + DOB + '\'' +
                 ", height=" + height +
                 ", weight=" + weight +

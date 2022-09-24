@@ -9,8 +9,8 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-roles = ['Patient', 'Doctor'];
-  constructor(private router: Router,private userService: UserService) { }
+  roles = ['Patient', 'Doctor'];
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -21,20 +21,21 @@ roles = ['Patient', 'Doctor'];
   });
 
   submit() {
-    const user ={
+    const user = {
       userName: this.form.get('username')!.value,
       password: this.form.get('password')!.value,
       role: this.form.get('role')!.value,
     }
     this.userService.login(user).subscribe((response) => {
-        console.log(response);
-        if(user.role=="Patient"){
-          this.router.navigate(['/home']);
-        }
-        else{
-          this.router.navigate(['/doctor-dashboard'])
-        }
+      console.log(response);
+      sessionStorage.setItem("patientId", response);
+      if (user.role == "Patient") {
+        this.router.navigate(['/home']);
+      }
+      else {
+        this.router.navigate(['/doctor-dashboard'])
+      }
     })
-  //  console.log()
+    //  console.log()
   }
 }

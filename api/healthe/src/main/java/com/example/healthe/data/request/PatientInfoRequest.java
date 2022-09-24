@@ -2,27 +2,27 @@ package com.example.healthe.data.request;
 
 public class PatientInfoRequest {
 
-    private  String patientName;
+    private final String patientName;
 
-    private  int UUID;
+    private final String patientId;
 
-    private String DOB;
+    private final String DOB;
 
-    private  float height;
+    private final float height;
 
-    private float weight;
+    private final float weight;
 
-    private  String allergies;
+    private final String allergies;
 
-    private  String medication;
+    private final String medication;
 
-    private  String disease;
+    private final String disease;
 
-    private String bloodGroup;
+    private final String bloodGroup;
 
-    public PatientInfoRequest(String patientName, int UUID, String DOB, float height, float weight, String allergies, String medication, String disease, String bloodGroup) {
+    public PatientInfoRequest(String patientName, String patientId, String DOB, float height, float weight, String allergies, String medication, String disease, String bloodGroup) {
         this.patientName = patientName;
-        this.UUID = UUID;
+        this.patientId = patientId;
         this.DOB = DOB;
         this.height = height;
         this.weight = weight;
@@ -36,8 +36,8 @@ public class PatientInfoRequest {
         return patientName;
     }
 
-    public int getUUID() {
-        return UUID;
+    public String getPatientId() {
+        return patientId;
     }
 
     public String getDOB() {

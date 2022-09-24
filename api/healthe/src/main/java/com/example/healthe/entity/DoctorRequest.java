@@ -8,11 +8,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "doctor_request")
-public class doctorRequest {
+public class DoctorRequest {
 
     @Id
     @Column(name = "request_id")
-    private  int requestId;
+    private int requestId;
 
     @Column(name = "uuid")
     private int UUID;
@@ -30,7 +30,7 @@ public class doctorRequest {
     private String status;
 
 
-    public doctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
+    public DoctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
         this.requestId = requestId;
         this.UUID = UUID;
         this.reason = reason;

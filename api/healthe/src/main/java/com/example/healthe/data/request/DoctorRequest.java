@@ -2,17 +2,17 @@ package com.example.healthe.data.request;
 
 public class DoctorRequest {
 
-    private  int requestId;
+    private final int requestId;
 
-    private int UUID;
+    private final int UUID;
 
-    private String reason;
+    private final String reason;
 
-    private int doctorId;
+    private final int doctorId;
 
-    private String date;
+    private final String date;
 
-    private String status;
+    private final String status;
 
 
     public DoctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
