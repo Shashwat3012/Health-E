@@ -1,15 +1,18 @@
 package com.example.healthe.services;
 
+import com.example.healthe.data.request.DoctorRequest;
 import com.example.healthe.data.request.LoginUserRequest;
 import com.example.healthe.data.request.PatientInfoRequest;
 import com.example.healthe.data.request.RegisterUserRequest;
 import com.example.healthe.entity.PatientInfo;
+import com.example.healthe.repository.DoctorRequestRepository;
 import com.example.healthe.repository.PatientInfoRepository;
 import com.example.healthe.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -18,6 +21,8 @@ public class UserServiceImpl implements User {
     private UserRepository userRepo;
     @Autowired
     private PatientInfoRepository patientRepo;
+    @Autowired
+    private DoctorRequestRepository doctorRepo;
 
     @Override
     public String registerUser(RegisterUserRequest userRequest) {
@@ -43,5 +48,20 @@ public class UserServiceImpl implements User {
                 patientInfo.getAllergies(),patientInfo.getMedication(),patientInfo.getDisease(),
                 patientInfo.getBloodGroup(),patientInfo.getInjuryHistory()));
         return "Submitted Successfully";
+    }
+
+    @Override
+    public String requestData(DoctorRequest doctorRequest){
+        String requestId = UUID.randomUUID().toString().substring(0, 6);
+        doctorRepo.save(new com.example.healthe.entity.DoctorRequest(requestId,doctorRequest.getpatientId(),
+                doctorRequest.getReason(),doctorRequest.getDoctorId(),doctorRequest.getDate(),
+                doctorRequest.getStatus()));
+        return "Status Pending!";
+    }
+
+    @Override
+    public List<PatientInfo> getPatientInfo() {
+        List<PatientInfo> patientList =  patientRepo.findAll();
+        return patientList;
     }
 }

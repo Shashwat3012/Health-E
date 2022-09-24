@@ -2,41 +2,34 @@ package com.example.healthe.data.request;
 
 public class DoctorRequest {
 
-    private final int requestId;
-
-    private final int UUID;
+    private final String patientId;
 
     private final String reason;
 
-    private final int doctorId;
+    private final String doctorId;
 
     private final String date;
 
     private final String status;
 
 
-    public DoctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
-        this.requestId = requestId;
-        this.UUID = UUID;
+    public DoctorRequest(String patientId, String reason, String doctorId, String date, String status) {
+        this.patientId = patientId;
         this.reason = reason;
         this.doctorId = doctorId;
         this.date = date;
         this.status = status;
     }
 
-    public int getRequestId() {
-        return requestId;
-    }
-
-    public int getUUID() {
-        return UUID;
+    public String getpatientId() {
+        return patientId;
     }
 
     public String getReason() {
         return reason;
     }
 
-    public int getDoctorId() {
+    public String getDoctorId() {
         return doctorId;
     }
 

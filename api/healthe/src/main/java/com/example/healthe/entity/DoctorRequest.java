@@ -12,16 +12,16 @@ public class DoctorRequest {
 
     @Id
     @Column(name = "request_id")
-    private int requestId;
+    private String requestId;
 
-    @Column(name = "uuid")
-    private int UUID;
+    @Column(name = "patient_id")
+    private String patientId;
 
     @Column(name = "reason")
     private String reason;
 
     @Column(name = "doctor_id")
-    private int doctorId;
+    private String doctorId;
 
     @Column(name = "date")
     private String date;
@@ -29,10 +29,13 @@ public class DoctorRequest {
     @Column(name = "status")
     private String status;
 
+    public DoctorRequest(){
 
-    public DoctorRequest(int requestId, int UUID, String reason, int doctorId, String date, String status) {
+    }
+
+    public DoctorRequest(String requestId, String patientId, String reason, String doctorId, String date, String status) {
         this.requestId = requestId;
-        this.UUID = UUID;
+        this.patientId = patientId;
         this.reason = reason;
         this.doctorId = doctorId;
         this.date = date;
@@ -40,20 +43,20 @@ public class DoctorRequest {
     }
 
 
-    public int getRequestId() {
+    public String getRequestId() {
         return requestId;
     }
 
-    public void setRequestId(int requestId) {
+    public void setRequestId(String requestId) {
         this.requestId = requestId;
     }
 
-    public int getUUID() {
-        return UUID;
+    public String getpatientId() {
+        return patientId;
     }
 
-    public void setUUID(int UUID) {
-        this.UUID = UUID;
+    public void setpatientId(String patientId) {
+        this.patientId = patientId;
     }
 
     public String getReason() {
@@ -64,11 +67,11 @@ public class DoctorRequest {
         this.reason = reason;
     }
 
-    public int getDoctorId() {
+    public String getDoctorId() {
         return doctorId;
     }
 
-    public void setDoctorId(int doctorId) {
+    public void setDoctorId(String doctorId) {
         this.doctorId = doctorId;
     }
 
@@ -92,7 +95,7 @@ public class DoctorRequest {
     public String toString() {
         return "doctorRequest{" +
                 "requestId=" + requestId +
-                ", UUID=" + UUID +
+                ", patientId=" + patientId +
                 ", reason='" + reason + '\'' +
                 ", doctorId=" + doctorId +
                 ", date='" + date + '\'' +

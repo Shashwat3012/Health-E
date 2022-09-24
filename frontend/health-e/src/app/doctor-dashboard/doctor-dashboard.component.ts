@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ConnectableObservable } from 'rxjs';
 import { PatientInfoDialog } from '../home/home.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-doctor-dashboard',
@@ -13,7 +15,11 @@ export class DoctorDashboardComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    
   }
+  approved(){
+    
+}
 
   openDialog(){
    this.dialog.open(DoctorRequestDialog, {
@@ -31,7 +37,7 @@ export class DoctorDashboardComponent implements OnInit {
 })
 export class DoctorRequestDialog implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<DoctorRequestDialog>) { }
+  constructor(public dialogRef: MatDialogRef<DoctorRequestDialog>, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -39,13 +45,21 @@ export class DoctorRequestDialog implements OnInit {
     patientid: new FormControl(''),
     doctorid: new FormControl(''),
     reason: new FormControl(''),
-    date: new FormControl(''),
-    status: new FormControl('')
+    date: new FormControl('')
   });
 
   submit() {
-    console.log("hello");
-  //  console.log()
+    const request = {
+      patientid: this.form.get('patientid')!.value,
+      doctorid: this.form.get('doctorid')!.value,
+      reason: this.form.get('reason')!.value,
+      date: this.form.get('date')!.value,
+      status: "Pending"
+    }
+
+    this.userService.requestData(request).subscribe((response) => {
+      console.log(response);
+  })
   }
 
   close(){
