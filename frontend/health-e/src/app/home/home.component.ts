@@ -42,7 +42,7 @@ export class PatientInfoDialog implements OnInit {
     bloodgroup: new FormControl(''),
     allergies: new FormControl(''),
     diseases: new FormControl(''),
-    injuryhistory: new FormControl(''),
+    injuryHistory: new FormControl(''),
     medication: new FormControl(''),
     height: new FormControl(''),
     weight: new FormControl(''),
@@ -51,12 +51,14 @@ export class PatientInfoDialog implements OnInit {
   submit() {
     const user = {
       patientName: this.form.get('firstName')!.value + this.form.get('lastName')!.value,
-      patientId:  sessionStorage.getItem("patientId"),
+      patientId: sessionStorage.getItem("patientId"),
       dob: this.form.get('dob')!.value,
+      height: this.form.get('height')!.value,
+      weight: this.form.get('weight')!.value,
       bloodGroup: this.form.get('bloodgroup')!.value,
       allergies: this.form.get('allergies')!.value,
-      diseases: this.form.get('diseases')!.value,
-      injuryhistory: this.form.get('injuryhistory')!.value,
+      disease: this.form.get('diseases')!.value,
+      injuryHistory: this.form.get('injuryHistory')!.value,
       medication: this.form.get('medication')!.value
     }
     this.userService.submitPatientData(user).subscribe((response) => {

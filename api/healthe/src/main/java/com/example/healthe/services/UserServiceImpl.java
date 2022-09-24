@@ -33,11 +33,6 @@ public class UserServiceImpl implements User {
             return "User Not Found!";
         } else {
             return user.getUuid();
-//            if (userRequest.getPassword().equals(user.getPassword())) {
-//                return user.getUuid();
-//            } else {
-//                return "Incorrect Password";
-//            }
         }
     }
 
@@ -46,7 +41,7 @@ public class UserServiceImpl implements User {
         patientRepo.save(new PatientInfo(patientInfo.getPatientName(), patientInfo.getPatientId(),
                 patientInfo.getDOB(), patientInfo.getHeight(),patientInfo.getWeight(),
                 patientInfo.getAllergies(),patientInfo.getMedication(),patientInfo.getDisease(),
-                patientInfo.getBloodGroup()));
+                patientInfo.getBloodGroup(),patientInfo.getInjuryHistory()));
         return "Submitted Successfully";
     }
 }

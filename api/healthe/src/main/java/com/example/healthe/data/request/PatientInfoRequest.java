@@ -20,7 +20,10 @@ public class PatientInfoRequest {
 
     private final String bloodGroup;
 
-    public PatientInfoRequest(String patientName, String patientId, String DOB, float height, float weight, String allergies, String medication, String disease, String bloodGroup) {
+    private final String injuryHistory;
+
+    public PatientInfoRequest(String patientName, String patientId, String DOB, float height, float weight,
+                              String allergies, String medication, String disease, String bloodGroup, String injuryHistory) {
         this.patientName = patientName;
         this.patientId = patientId;
         this.DOB = DOB;
@@ -30,6 +33,7 @@ public class PatientInfoRequest {
         this.medication = medication;
         this.disease = disease;
         this.bloodGroup = bloodGroup;
+        this.injuryHistory = injuryHistory;
     }
 
     public String getPatientName() {
@@ -66,5 +70,9 @@ public class PatientInfoRequest {
 
     public String getBloodGroup() {
         return bloodGroup;
+    }
+
+    public String getInjuryHistory() {
+        return injuryHistory;
     }
 }

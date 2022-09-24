@@ -1,17 +1,14 @@
 package com.example.healthe.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.annotation.processing.Generated;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "patient_info")
 public class PatientInfo {
     @Column(name = "patient_name")
     private String patientName;
-
-    @Id
+    
     @Column(name = "uuid")
     private String patientId;
 
@@ -36,8 +33,15 @@ public class PatientInfo {
     @Column(name = "blood_group")
     private String bloodGroup;
 
+    @Column(name = "injury_history")
+    private String injuryHistory;
 
-    public PatientInfo(String patientName, String patientId, String DOB, float height, float weight, String allergies, String medication, String disease, String bloodGroup) {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    public PatientInfo(String patientName, String patientId, String DOB, float height, float weight, String allergies,
+                       String medication, String disease, String bloodGroup, String injuryHistory) {
         this.patientName = patientName;
         this.patientId = patientId;
         this.DOB = DOB;
@@ -47,78 +51,10 @@ public class PatientInfo {
         this.medication = medication;
         this.disease = disease;
         this.bloodGroup = bloodGroup;
+        this.injuryHistory = injuryHistory;
     }
 
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
-
-    public String getUUID() {
-        return patientId;
-    }
-
-    public void setUUID(String patientId) {
-        this.patientId = patientId;
-    }
-
-    public String getDOB() {
-        return DOB;
-    }
-
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
-    public void setHeight(float height) {
-        this.height = height;
-    }
-
-    public float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-
-    public String getAllergies() {
-        return allergies;
-    }
-
-    public void setAllergies(String allergies) {
-        this.allergies = allergies;
-    }
-
-    public String getMedication() {
-        return medication;
-    }
-
-    public void setMedication(String medication) {
-        this.medication = medication;
-    }
-
-    public String getDisease() {
-        return disease;
-    }
-
-    public void setDisease(String disease) {
-        this.disease = disease;
-    }
-
-    public String getBloodGroup() {
-        return bloodGroup;
-    }
-
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
+    public PatientInfo() {
     }
 
     @Override
