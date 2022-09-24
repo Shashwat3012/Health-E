@@ -38,16 +38,21 @@ export class PatientInfoDialog implements OnInit {
   form: FormGroup = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
+    dob: new FormControl(''),
     bloodgroup: new FormControl(''),
     allergies: new FormControl(''),
     diseases: new FormControl(''),
     injuryhistory: new FormControl(''),
-    medication: new FormControl('')
+    medication: new FormControl(''),
+    height: new FormControl(''),
+    weight: new FormControl(''),
   });
 
   submit() {
     const user = {
       patientName: this.form.get('firstName')!.value + this.form.get('lastName')!.value,
+      patientId:  sessionStorage.getItem("patientId"),
+      dob: this.form.get('dob')!.value,
       bloodGroup: this.form.get('bloodgroup')!.value,
       allergies: this.form.get('allergies')!.value,
       diseases: this.form.get('diseases')!.value,

@@ -28,15 +28,16 @@ public class UserServiceImpl implements User {
 
     @Override
     public String loginUser(LoginUserRequest userRequest) {
-        com.example.healthe.entity.User user = userRepo.findByUsername(userRequest.getUserName());
+        com.example.healthe.entity.User user = userRepo.findByUsernameAndPassword(userRequest.getUserName(), userRequest.getPassword());
         if (user == null) {
             return "User Not Found!";
         } else {
-            if (userRequest.getPassword() == user.getPassword()) {
-                return user.getUuid();
-            } else {
-                return "Incorrect Password";
-            }
+            return user.getUuid();
+//            if (userRequest.getPassword().equals(user.getPassword())) {
+//                return user.getUuid();
+//            } else {
+//                return "Incorrect Password";
+//            }
         }
     }
 
