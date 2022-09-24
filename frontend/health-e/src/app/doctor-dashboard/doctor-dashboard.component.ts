@@ -11,7 +11,13 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./doctor-dashboard.component.css']
 })
 export class DoctorDashboardComponent implements OnInit {
-
+  patientInfo: any;
+  patientName = "";
+  patientId = "";
+  dob = "";
+  height = "";
+  weight = "";
+  bloodGroup = "";
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
   form: FormGroup = new FormGroup({
@@ -19,12 +25,14 @@ export class DoctorDashboardComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.fetchPatient();
+    // this.fetchPatient();
   }
   fetchPatient() {
     const patientId = this.form.get('patientId')!.value;
     this.userService.fetchPatient(patientId).subscribe((response) => {
       console.log(response);
+      this.patientInfo = response;
+      this.patientName = response.patientName;
     })
   }
 
