@@ -18,6 +18,8 @@ export class DoctorDashboardComponent implements OnInit {
   height = "";
   weight = "";
   bloodGroup = "";
+  allergies = "";
+  medication = "";
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
   form: FormGroup = new FormGroup({
@@ -33,6 +35,13 @@ export class DoctorDashboardComponent implements OnInit {
       console.log(response);
       this.patientInfo = response;
       this.patientName = response.patientName;
+
+
+      this.bloodGroup = response.bloodGroup;
+      this.allergies = response.allergies;
+      this.medication = response.medication;
+
+      
     })
   }
 
