@@ -77,5 +77,11 @@ public class UserServiceImpl implements User{
         return pRequest;
     }
 
+    @Override
+    public List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId) {
+        List<com.example.healthe.entity.DoctorRequest> patientRequests =  doctorRepo.findByPatientId(patientId);
+        return patientRequests;
+    }
+
 
 }

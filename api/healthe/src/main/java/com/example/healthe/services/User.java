@@ -4,9 +4,6 @@ import com.example.healthe.data.request.LoginUserRequest;
 import com.example.healthe.data.request.PatientInfoRequest;
 import com.example.healthe.data.request.RegisterUserRequest;
 import com.example.healthe.data.request.DoctorRequest;
-import com.example.healthe.entity.PatientInfo;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public interface User {
@@ -19,4 +16,6 @@ public interface User {
     String requestData(DoctorRequest doctorRequest);
 
     PatientInfoRequest getPatientInfo(String patientId) throws InterruptedException;
+
+    List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId);
 }

@@ -38,8 +38,18 @@ public class UserController {
         return userService.requestData(doctorRequest);
     }
 
+    @GetMapping("/getRequests")
+    public List<com.example.healthe.entity.DoctorRequest> getRequests(@RequestParam String patientId) throws InterruptedException {
+        try{
+            return userService.getRequestsForPatient(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+
+    }
+
     @GetMapping("/patientInfo")
-        public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
+    public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
         try{
             return userService.getPatientInfo(patientId);
         } catch(Exception e){
