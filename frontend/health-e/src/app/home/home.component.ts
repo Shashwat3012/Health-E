@@ -22,18 +22,13 @@ export interface RequestData {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
   displayedColumns: string[] = ['requestId', 'doctorId', 'reason', 'date', 'status', 'action'];
   dataSource!: MatTableDataSource<RequestData>;
   patientId = "";
   ngOnInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-    this.patientId = sessionStorage.getItem("patientId") || "";
+    this.patientId = sessionStorage.getItem("userId") || "";
     this.fetchPatientRequests(this.patientId);
   }
 
@@ -49,8 +44,14 @@ export class HomeComponent implements OnInit {
       width: '600px',
     });
   }
-  statusUpdate(status: string) {
-
+  statusUpdate(status: string, id: string) {
+    const request = {
+      requestId: id,
+      status: status
+    }
+    this.userService.updateRequestStatus(request).subscribe((response) => {
+      console.log(response);
+    })
   }
 
 }
@@ -82,7 +83,7 @@ export class PatientInfoDialog implements OnInit {
   submit() {
     const user = {
       patientName: this.form.get('firstName')!.value + this.form.get('lastName')!.value,
-      patientId: sessionStorage.getItem("patientId"),
+      patientId: sessionStorage.getItem("userId"),
       dob: this.form.get('dob')!.value,
       height: this.form.get('height')!.value,
       weight: this.form.get('weight')!.value,

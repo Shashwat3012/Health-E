@@ -1,10 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ConnectableObservable } from 'rxjs';
-import { PatientInfoDialog } from '../home/home.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../services/user.service';
 
+export interface RequestData {
+  requestId: string;
+  patientId: string;
+  doctorId: string;
+  reason: string;
+  date: string;
+  status: string;
+}
+export interface PatientInfo {
+  patientName: string;
+  patientId: string;
+  dob: string;
+  height: string;
+  weight: string;
+  allergies: string;
+  medication: string;
+  disease: string;
+  bloodGroup: string;
+  injuryHistory: string;
+}
 @Component({
   selector: 'app-doctor-dashboard',
   templateUrl: './doctor-dashboard.component.html',
@@ -20,6 +39,12 @@ export class DoctorDashboardComponent implements OnInit {
   bloodGroup = "";
   allergies = "";
   medication = "";
+  doctorId = sessionStorage.getItem("userId") || "";
+  displayedColumns: string[] = ['requestId', 'doctorId', 'reason', 'date', 'status'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'action'];
+  expandedElement!: PatientInfo | null;
+  dataSource!: MatTableDataSource<RequestData>;
+
   constructor(public dialog: MatDialog, private userService: UserService) { }
 
   form: FormGroup = new FormGroup({
@@ -27,7 +52,13 @@ export class DoctorDashboardComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // this.fetchPatient();
+    this.fetchPatientRequests(this.doctorId);
+  }
+  fetchPatientRequests(doctorId: string) {
+    this.userService.fetchRequestsByDoctor(this.doctorId).subscribe((response) => {
+      console.log(response);
+      this.dataSource = response;
+    })
   }
   fetchPatient() {
     const patientId = this.form.get('patientId')!.value;
@@ -35,16 +66,21 @@ export class DoctorDashboardComponent implements OnInit {
       console.log(response);
       this.patientInfo = response;
       this.patientName = response.patientName;
-
-
       this.bloodGroup = response.bloodGroup;
       this.allergies = response.allergies;
       this.medication = response.medication;
-
-      
     })
   }
-
+  viewPatientData(patientId: string) {
+    this.userService.fetchPatient(patientId).subscribe((response) => {
+      console.log(response);
+      this.dialog.open(PatientInfoDetails, {
+        height: '600px',
+        width: '600px',
+        data: response
+      });
+    })
+  }
   openDialog() {
     this.dialog.open(DoctorRequestDialog, {
       height: '600px',
@@ -84,6 +120,51 @@ export class DoctorRequestDialog implements OnInit {
       console.log(response);
     })
   }
+
+  close() {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  // selector: 'app-home',
+  templateUrl: './patientInfo-dialog.component.html',
+  styleUrls: ['./../home/home.component.css']
+})
+export class PatientInfoDetails implements OnInit {
+  form: FormGroup = new FormGroup({
+    patientName: new FormControl(''),
+    dob: new FormControl(''),
+    bloodgroup: new FormControl(''),
+    allergies: new FormControl(''),
+    diseases: new FormControl(''),
+    injuryHistory: new FormControl(''),
+    medication: new FormControl(''),
+    height: new FormControl(''),
+    weight: new FormControl(''),
+  });
+  constructor(public dialogRef: MatDialogRef<PatientInfoDetails>, @Inject(MAT_DIALOG_DATA) public data: any,) { }
+  ngOnInit(): void {
+      this.form.get('patientName')!.setValue(this.data.patientName);
+      this.form.get('dob')!.setValue(this.data.dob);
+      this.form.get('height')!.setValue(this.data.height);
+      this.form.get('weight')!.setValue(this.data.weight);
+      this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
+      this.form.get('allergies')!.setValue(this.data.allergies);
+      this.form.get('diseases')!.setValue(this.data.diseases);
+      this.form.get('injuryHistory')!.setValue(this.data.injuryHistory);
+      this.form.get('medication')!.setValue(this.data.medication);
+
+      this.form.get('patientName')!.disable();
+      this.form.get('dob')!.disable();
+      this.form.get('height')!.disable();
+      this.form.get('weight')!.disable();
+      this.form.get('bloodgroup')!.disable();
+      this.form.get('allergies')!.disable();
+      this.form.get('diseases')!.disable();
+      this.form.get('injuryHistory')!.disable();
+      this.form.get('medication')!.disable();
+}
 
   close() {
     this.dialogRef.close();

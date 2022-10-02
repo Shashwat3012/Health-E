@@ -37,4 +37,13 @@ export class UserService {
         return this.http.get('http://localhost:8080/getRequests', { ...this.httpOptions, params: queryParams })
     }
 
+    updateRequestStatus(request: any): Observable<any> {
+        return this.http.post('http://localhost:8080/updateRequestStatus', request, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    fetchRequestsByDoctor(doctorId: string): Observable<any> {
+        let queryParams = new HttpParams().append("doctorId", doctorId);
+        return this.http.get('http://localhost:8080/getRequestsByDoctor', { ...this.httpOptions, params: queryParams })
+    }
+
 }
