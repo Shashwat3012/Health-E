@@ -1,9 +1,6 @@
 package com.example.healthe.services;
 
-import com.example.healthe.data.request.DoctorRequest;
-import com.example.healthe.data.request.LoginUserRequest;
-import com.example.healthe.data.request.PatientInfoRequest;
-import com.example.healthe.data.request.RegisterUserRequest;
+import com.example.healthe.data.request.*;
 import com.example.healthe.entity.PatientInfo;
 import com.example.healthe.repository.DoctorRequestRepository;
 import com.example.healthe.repository.PatientInfoRepository;
@@ -81,6 +78,17 @@ public class UserServiceImpl implements User{
     public List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId) {
         List<com.example.healthe.entity.DoctorRequest> patientRequests =  doctorRepo.findByPatientId(patientId);
         return patientRequests;
+    }
+
+    public List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(String doctorId) {
+        List<com.example.healthe.entity.DoctorRequest> doctorRequests =  doctorRepo.findByDoctorId(doctorId);
+        return doctorRequests;
+    }
+
+    @Override
+    public String updateRequestStatus(UpdateDoctorRequest docRequest) {
+        doctorRepo.updateStatus(docRequest.getStatus(),docRequest.getRequestId());
+        return docRequest.getStatus();
     }
 
 

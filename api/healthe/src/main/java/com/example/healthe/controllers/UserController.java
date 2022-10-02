@@ -1,9 +1,6 @@
 package com.example.healthe.controllers;
 
-import com.example.healthe.data.request.DoctorRequest;
-import com.example.healthe.data.request.LoginUserRequest;
-import com.example.healthe.data.request.PatientInfoRequest;
-import com.example.healthe.data.request.RegisterUserRequest;
+import com.example.healthe.data.request.*;
 import com.example.healthe.entity.PatientInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +45,16 @@ public class UserController {
 
     }
 
+    @GetMapping("/getRequestsByDoctor")
+    public List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(@RequestParam String doctorId) throws InterruptedException {
+        try{
+            return userService.getRequestsByDoctor(doctorId);
+        } catch(Exception e){
+            throw e;
+        }
+
+    }
+
     @GetMapping("/patientInfo")
     public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
         try{
@@ -55,6 +62,11 @@ public class UserController {
         } catch(Exception e){
             throw e;
         }
-
     }
+
+    @PostMapping("/updateRequestStatus")
+    public String updateRequestStatus(@RequestBody UpdateDoctorRequest docRequest){
+        return userService.updateRequestStatus(docRequest);
+    }
+
 }

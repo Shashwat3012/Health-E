@@ -1,9 +1,7 @@
 package com.example.healthe.services;
 
-import com.example.healthe.data.request.LoginUserRequest;
-import com.example.healthe.data.request.PatientInfoRequest;
-import com.example.healthe.data.request.RegisterUserRequest;
-import com.example.healthe.data.request.DoctorRequest;
+import com.example.healthe.data.request.*;
+
 import java.util.List;
 
 public interface User {
@@ -18,4 +16,8 @@ public interface User {
     PatientInfoRequest getPatientInfo(String patientId) throws InterruptedException;
 
     List<com.example.healthe.entity.DoctorRequest> getRequestsForPatient(String patientId);
+
+    String updateRequestStatus(UpdateDoctorRequest docRequest);
+
+    List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(String doctorId);
 }
