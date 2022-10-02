@@ -64,21 +64,28 @@ export class DoctorDashboardComponent implements OnInit {
     const patientId = this.form.get('patientId')!.value;
     this.userService.fetchPatient(patientId).subscribe((response) => {
       console.log(response);
-      this.patientInfo = response;
       this.patientName = response.patientName;
       this.bloodGroup = response.bloodGroup;
-      this.allergies = response.allergies;
-      this.medication = response.medication;
+      this.height = response.height;
+      this.weight = response.weight;
     })
   }
-  viewPatientData(patientId: string) {
+  viewPatientData(patientId: string, status: string) {
     this.userService.fetchPatient(patientId).subscribe((response) => {
-      console.log(response);
-      this.dialog.open(PatientInfoDetails, {
-        height: '600px',
-        width: '600px',
-        data: response
-      });
+      if (status == 'Approved') {
+        this.dialog.open(PatientInfoDetails, {
+          height: '600px',
+          width: '600px',
+          data: response
+        });
+      } else {
+        this.dialog.open(MaskedDetails, {
+          height: '600px',
+          width: '600px',
+          data: response
+        });
+      }
+
     })
   }
   openDialog() {
@@ -145,26 +152,55 @@ export class PatientInfoDetails implements OnInit {
   });
   constructor(public dialogRef: MatDialogRef<PatientInfoDetails>, @Inject(MAT_DIALOG_DATA) public data: any,) { }
   ngOnInit(): void {
-      this.form.get('patientName')!.setValue(this.data.patientName);
-      this.form.get('dob')!.setValue(this.data.dob);
-      this.form.get('height')!.setValue(this.data.height);
-      this.form.get('weight')!.setValue(this.data.weight);
-      this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
-      this.form.get('allergies')!.setValue(this.data.allergies);
-      this.form.get('diseases')!.setValue(this.data.diseases);
-      this.form.get('injuryHistory')!.setValue(this.data.injuryHistory);
-      this.form.get('medication')!.setValue(this.data.medication);
+    this.form.get('patientName')!.setValue(this.data.patientName);
+    this.form.get('dob')!.setValue(this.data.dob);
+    this.form.get('height')!.setValue(this.data.height);
+    this.form.get('weight')!.setValue(this.data.weight);
+    this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
+    this.form.get('allergies')!.setValue(this.data.allergies);
+    this.form.get('diseases')!.setValue(this.data.diseases);
+    this.form.get('injuryHistory')!.setValue(this.data.injuryHistory);
+    this.form.get('medication')!.setValue(this.data.medication);
 
-      this.form.get('patientName')!.disable();
-      this.form.get('dob')!.disable();
-      this.form.get('height')!.disable();
-      this.form.get('weight')!.disable();
-      this.form.get('bloodgroup')!.disable();
-      this.form.get('allergies')!.disable();
-      this.form.get('diseases')!.disable();
-      this.form.get('injuryHistory')!.disable();
-      this.form.get('medication')!.disable();
+    this.form.get('patientName')!.disable();
+    this.form.get('dob')!.disable();
+    this.form.get('height')!.disable();
+    this.form.get('weight')!.disable();
+    this.form.get('bloodgroup')!.disable();
+    this.form.get('allergies')!.disable();
+    this.form.get('diseases')!.disable();
+    this.form.get('injuryHistory')!.disable();
+    this.form.get('medication')!.disable();
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
 }
+
+@Component({
+  templateUrl: './masked-patient-dialog.html',
+  styleUrls: ['./../home/home.component.css']
+})
+export class MaskedDetails implements OnInit {
+  form: FormGroup = new FormGroup({
+    patientName: new FormControl(''),
+    bloodgroup: new FormControl(''),
+    allergies: new FormControl(''),
+    medication: new FormControl(''),
+  });
+  constructor(public dialogRef: MatDialogRef<PatientInfoDetails>, @Inject(MAT_DIALOG_DATA) public data: any,) { }
+  ngOnInit(): void {
+    this.form.get('patientName')!.setValue(this.data.patientName);
+    this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
+    this.form.get('allergies')!.setValue(this.data.allergies);
+    this.form.get('medication')!.setValue(this.data.medication);
+
+    this.form.get('patientName')!.disable();
+    this.form.get('bloodgroup')!.disable();
+    this.form.get('allergies')!.disable();
+    this.form.get('medication')!.disable();
+  }
 
   close() {
     this.dialogRef.close();

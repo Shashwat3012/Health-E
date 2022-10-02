@@ -14,10 +14,10 @@
                 </mat-form-field> &nbsp;
             </form>
             <div *ngIf="patientName != ''">
-                <span>Patient Name: {{patientName}}</span>
-                <span>Blood Group: {{bloodGroup}}</span>
-                <span>Allergies: {{allergies}}</span>
-                <span>Medication: {{medication}}</span>
+                <span>Patient Name: {{patientName}}</span> &nbsp;
+                <span>Blood Group: {{bloodGroup}}</span> &nbsp;
+                <span>Height: {{height}}</span> &nbsp;
+                <span>Weight: {{weight}}</span> &nbsp;
             </div>
         </div>
 
@@ -59,7 +59,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row">
                     <mat-icon matTooltip="View Patient Data" matTooltipPosition="right"
-                        (click)="viewPatientData(row.patientId)" style="cursor:pointer;">assessment</mat-icon>
+                        (click)="viewPatientData(row.patientId,row.status)" style="cursor:pointer;">assessment</mat-icon>
                 </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>

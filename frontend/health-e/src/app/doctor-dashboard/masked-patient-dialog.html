@@ -1,0 +1,36 @@
+<div>
+    <form [formGroup]="form" class="formClass">
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClassText">
+                <mat-label>Patient Name</mat-label>
+                <input matInput formControlName="patientName" [readonly]="true">
+                <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field> &nbsp;
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClassText">
+                <mat-label>Blood Group</mat-label>
+                <input matInput formControlName="bloodgroup" [readonly]="true">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Allergies</mat-label>
+            <textarea matInput formControlName="allergies" [readonly]="true"></textarea>
+            <mat-icon matSuffix>masks</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Medication</mat-label>
+            <textarea matInput formControlName="medication" [readonly]="true"></textarea>
+            <mat-icon matSuffix>medication</mat-icon>
+        </mat-form-field>
+
+        <div style="display: flex;flex-direction: column;">
+            <div style="margin-left: 45%;">
+
+                <button mat-raised-button class="button" (click)="close()">Close</button>
+            </div>
+        </div>
+    </form>
+</div>

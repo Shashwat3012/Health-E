@@ -18,7 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import {  MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DoctorDashboardComponent, DoctorRequestDialog, PatientInfoDetails } from './doctor-dashboard/doctor-dashboard.component';
+import { DoctorDashboardComponent, DoctorRequestDialog, MaskedDetails, PatientInfoDetails } from './doctor-dashboard/doctor-dashboard.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
@@ -42,7 +42,8 @@ const routes: Routes = [
     PatientInfoDialog,
     DoctorDashboardComponent,
     DoctorRequestDialog,
-    PatientInfoDetails
+    PatientInfoDetails,
+    MaskedDetails
   ],
   imports: [
     BrowserModule,
