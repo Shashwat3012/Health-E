@@ -29,7 +29,12 @@ export class UserService {
 
     fetchPatient(patientId: string): Observable<any> {
         let queryParams = new HttpParams().append("patientId", patientId);
-        return this.http.get('http://localhost:8080/patientInfo', { ...this.httpOptions, params: queryParams})
+        return this.http.get('http://localhost:8080/patientInfo', { ...this.httpOptions, params: queryParams })
+    }
+
+    fetchPatientRequests(patientId: string): Observable<any> {
+        let queryParams = new HttpParams().append("patientId", patientId);
+        return this.http.get('http://localhost:8080/getRequests', { ...this.httpOptions, params: queryParams })
     }
 
 }

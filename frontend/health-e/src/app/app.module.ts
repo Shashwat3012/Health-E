@@ -21,6 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DoctorDashboardComponent, DoctorRequestDialog } from './doctor-dashboard/doctor-dashboard.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -31,8 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    
+  declarations: [ 
     AppComponent,
     LoginComponent,
     HomeComponent,
@@ -49,18 +50,18 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    // MatSliderModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
     MatCardModule,
-    // MatSelectModule,
     MatRadioModule,
     MatToolbarModule,
     MatMenuModule,
     MatTooltipModule,
     MatDialogModule,
-    HttpClientModule 
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule 
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }, UserService

@@ -74,8 +74,8 @@ export class DoctorRequestDialog implements OnInit {
 
   submit() {
     const request = {
-      patientid: this.form.get('patientid')!.value,
-      doctorid: this.form.get('doctorid')!.value,
+      patientId: this.form.get('patientid')!.value,
+      doctorId: this.form.get('doctorid')!.value,
       reason: this.form.get('reason')!.value,
       date: this.form.get('date')!.value,
       status: "Pending"

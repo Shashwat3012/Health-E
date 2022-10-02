@@ -18,3 +18,16 @@
 .formFieldClassText {
     width: 98%;
 }
+
+table {
+    width: 100%;
+}
+
+td,
+th {
+    width: 20%;
+}
+
+/* mat-elevation-z8 {
+    width: 80%;
+} */

@@ -1,7 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Form } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../services/user.service';
+
+export interface RequestData {
+  requestId: string;
+  patientId: string;
+  doctorId: string;
+  reason: string;
+  date: string;
+  status: string;
+}
+
 
 @Component({
   selector: 'app-home',
@@ -9,17 +22,35 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private userService: UserService) { }
 
-  ngOnInit(): void { }
+  displayedColumns: string[] = ['requestId', 'doctorId', 'reason', 'date', 'status', 'action'];
+  dataSource!: MatTableDataSource<RequestData>;
+  patientId = "";
+  ngOnInit() {
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    this.patientId = sessionStorage.getItem("patientId") || "";
+    this.fetchPatientRequests(this.patientId);
+  }
 
-
+  fetchPatientRequests(patientId: string) {
+    this.userService.fetchPatientRequests(this.patientId).subscribe((response) => {
+      console.log(response);
+      this.dataSource = response;
+    })
+  }
   openDialog() {
     this.dialog.open(PatientInfoDialog, {
       height: '600px',
       width: '600px',
     });
+  }
+  statusUpdate(status: string) {
+
   }
 
 }
