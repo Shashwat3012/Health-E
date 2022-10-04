@@ -40,8 +40,8 @@ export class DoctorDashboardComponent implements OnInit {
   allergies = "";
   medication = "";
   doctorId = sessionStorage.getItem("userId") || "";
-  displayedColumns: string[] = ['requestId', 'doctorId', 'reason', 'date', 'status'];
-  columnsToDisplayWithExpand = [...this.displayedColumns, 'action'];
+  displayedColumns: string[] = ['requestId', 'patientId', 'reason', 'date', 'status', 'action'];
+  // columnsToDisplayWithExpand = [...this.displayedColumns, 'action'];
   expandedElement!: PatientInfo | null;
   dataSource!: MatTableDataSource<RequestData>;
 
@@ -56,18 +56,22 @@ export class DoctorDashboardComponent implements OnInit {
   }
   fetchPatientRequests(doctorId: string) {
     this.userService.fetchRequestsByDoctor(this.doctorId).subscribe((response) => {
-      console.log(response);
       this.dataSource = response;
     })
   }
   fetchPatient() {
     const patientId = this.form.get('patientId')!.value;
     this.userService.fetchPatient(patientId).subscribe((response) => {
-      console.log(response);
-      this.patientName = response.patientName;
-      this.bloodGroup = response.bloodGroup;
-      this.height = response.height;
-      this.weight = response.weight;
+      // console.log(response);
+      // this.patientName = response.patientName;
+      // this.bloodGroup = response.bloodGroup;
+      // this.height = response.height;
+      // this.weight = response.weight;
+      this.dialog.open(MaskedDetails, {
+        height: '600px',
+        width: '600px',
+        data: response
+      });
     })
   }
   viewPatientData(patientId: string, status: string) {

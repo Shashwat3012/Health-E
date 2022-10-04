@@ -82,7 +82,7 @@ export class PatientInfoDialog implements OnInit {
 
   submit() {
     const user = {
-      patientName: this.form.get('firstName')!.value + this.form.get('lastName')!.value,
+      patientName: this.form.get('firstName')!.value +" " + this.form.get('lastName')!.value,
       patientId: sessionStorage.getItem("userId"),
       dob: this.form.get('dob')!.value,
       height: this.form.get('height')!.value,
