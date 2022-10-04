@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../services/user.service';
 
@@ -41,7 +42,6 @@ export class DoctorDashboardComponent implements OnInit {
   medication = "";
   doctorId = sessionStorage.getItem("userId") || "";
   displayedColumns: string[] = ['requestId', 'patientId', 'reason', 'date', 'status', 'action'];
-  // columnsToDisplayWithExpand = [...this.displayedColumns, 'action'];
   expandedElement!: PatientInfo | null;
   dataSource!: MatTableDataSource<RequestData>;
 
@@ -62,11 +62,6 @@ export class DoctorDashboardComponent implements OnInit {
   fetchPatient() {
     const patientId = this.form.get('patientId')!.value;
     this.userService.fetchPatient(patientId).subscribe((response) => {
-      // console.log(response);
-      // this.patientName = response.patientName;
-      // this.bloodGroup = response.bloodGroup;
-      // this.height = response.height;
-      // this.weight = response.weight;
       this.dialog.open(MaskedDetails, {
         height: '600px',
         width: '600px',
@@ -108,7 +103,8 @@ export class DoctorDashboardComponent implements OnInit {
 })
 export class DoctorRequestDialog implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<DoctorRequestDialog>, private userService: UserService) { }
+  constructor(public dialogRef: MatDialogRef<DoctorRequestDialog>,
+    private userService: UserService, private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -128,7 +124,10 @@ export class DoctorRequestDialog implements OnInit {
       status: "Pending"
     }
     this.userService.requestData(request).subscribe((response) => {
-      console.log(response);
+      this._snackbar.open("Successfully Requested Data from Patient", "Close", {
+        duration: 1500,
+
+      });
     })
   }
 

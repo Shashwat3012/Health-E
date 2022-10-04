@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
@@ -10,7 +11,8 @@ import { UserService } from '../services/user.service';
 })
 export class LoginComponent implements OnInit {
   roles = ['Patient', 'Doctor'];
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +29,10 @@ export class LoginComponent implements OnInit {
       role: this.form.get('role')!.value,
     }
     this.userService.login(user).subscribe((response) => {
-      console.log(response);
+      this._snackBar.open("Login Successful", "Close", {
+        duration: 1500,
+        
+      });
       sessionStorage.setItem("userId", response);
       sessionStorage.setItem("role", user.role);
       if (user.role == "Patient") {
@@ -40,7 +45,7 @@ export class LoginComponent implements OnInit {
     //  console.log()
   }
 
-  register(){
+  register() {
     this.router.navigate(['/register']);
   }
 }

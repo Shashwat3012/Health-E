@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 
@@ -10,7 +11,8 @@ import { UserService } from '../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService,private router:Router) { }
+  constructor(private userService: UserService, private router: Router,
+    private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
   });
 
   submit() {
-    const user ={
+    const user = {
       firstName: this.form.get('firstName')!.value,
       lastName: this.form.get('lastName')!.value,
       userName: this.form.get('username')!.value,
@@ -32,11 +34,14 @@ export class RegisterComponent implements OnInit {
       role: this.form.get('role')!.value,
     }
     this.userService.register(user).subscribe((response) => {
-        console.log(response);
+      this._snackbar.open("Register Successful", "Close", {
+        duration: 1500,
+
+      });
     })
   }
 
-  login(){
+  login() {
     this.router.navigate(['/login']);
   }
 }

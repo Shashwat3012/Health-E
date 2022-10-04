@@ -16,24 +16,26 @@ import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import {  MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DoctorDashboardComponent, DoctorRequestDialog, MaskedDetails, PatientInfoDetails } from './doctor-dashboard/doctor-dashboard.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   //{ path: 'second-component', component: SecondComponent },
-  { path: 'doctor-dashboard', component: DoctorDashboardComponent}
+  { path: 'doctor-dashboard', component: DoctorDashboardComponent }
 ];
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
@@ -63,7 +65,8 @@ const routes: Routes = [
     MatDialogModule,
     HttpClientModule,
     MatTableModule,
-    MatPaginatorModule 
+    MatPaginatorModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { floatLabel: 'auto' } }, UserService

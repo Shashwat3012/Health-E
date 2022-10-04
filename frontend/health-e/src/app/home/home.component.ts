@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Form } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../services/user.service';
@@ -22,7 +23,7 @@ export interface RequestData {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(public dialog: MatDialog, private userService: UserService) { }
+  constructor(public dialog: MatDialog, private userService: UserService, private _snackbar: MatSnackBar) { }
 
   displayedColumns: string[] = ['requestId', 'doctorId', 'reason', 'date', 'status', 'action'];
   dataSource!: MatTableDataSource<RequestData>;
@@ -50,7 +51,10 @@ export class HomeComponent implements OnInit {
       status: status
     }
     this.userService.updateRequestStatus(request).subscribe((response) => {
-      console.log(response);
+      this._snackbar.open("Successfully updated request", "Close", {
+        duration: 1500,
+
+      });
     })
   }
 
@@ -63,7 +67,8 @@ export class HomeComponent implements OnInit {
 })
 export class PatientInfoDialog implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<PatientInfoDialog>, private userService: UserService) { }
+  constructor(public dialogRef: MatDialogRef<PatientInfoDialog>,
+    private userService: UserService, private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -82,7 +87,7 @@ export class PatientInfoDialog implements OnInit {
 
   submit() {
     const user = {
-      patientName: this.form.get('firstName')!.value +" " + this.form.get('lastName')!.value,
+      patientName: this.form.get('firstName')!.value + " " + this.form.get('lastName')!.value,
       patientId: sessionStorage.getItem("userId"),
       dob: this.form.get('dob')!.value,
       height: this.form.get('height')!.value,
@@ -94,7 +99,10 @@ export class PatientInfoDialog implements OnInit {
       medication: this.form.get('medication')!.value
     }
     this.userService.submitPatientData(user).subscribe((response) => {
-      console.log(response);
+      this._snackbar.open("Successfully submitted info", "Close", {
+        duration: 1500,
+
+      });
       this.dialogRef.close();
     })
   }
