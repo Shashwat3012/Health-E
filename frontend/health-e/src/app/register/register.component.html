@@ -1,7 +1,7 @@
 <div>
     <mat-card class="login">
       <mat-card-content>
-        <form [formGroup]="form" (ngSubmit)="submit()" class="formClass">
+        <form [formGroup]="form" class="formClass">
           <mat-form-field appearance="outline">
             <mat-label>First Name</mat-label>
             <input matInput formControlName="firstName">
@@ -26,8 +26,9 @@
           <mat-radio-button value="Patient">Patient</mat-radio-button> &nbsp;&nbsp;
           <mat-radio-button value="Doctor">Doctor</mat-radio-button>
         </mat-radio-group>
-        <div class="button">
-          <button type="submit" mat-button>Register</button>
+        <div>
+          <button (click)="submit()" mat-button class="button">Register</button>
+          <button (click)="login()" mat-button class="button1">Login</button>
         </div>
       </form>
       </mat-card-content>
