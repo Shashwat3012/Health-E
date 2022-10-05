@@ -1,5 +1,7 @@
 package com.example.healthe.data.request;
 
+import javax.persistence.Column;
+
 public class PatientInfoRequest {
 
     private final String patientName;
@@ -22,11 +24,20 @@ public class PatientInfoRequest {
 
     private final String injuryHistory;
 
-    public PatientInfoRequest(String patientName, String patientId, String DOB, float height, float weight,
-                              String allergies, String medication, String disease, String bloodGroup, String injuryHistory) {
+    private final String nominee1Name;
+
+    private final String nominee1Contact;
+
+    private final String nominee2Name;
+
+    private final String nominee2Contact;
+
+    public PatientInfoRequest(String patientName, String patientId, String dob, float height, float weight,
+                              String allergies, String medication, String disease, String bloodGroup, String injuryHistory,
+                              String nominee1Name, String nominee1Contact, String nominee2Name, String nominee2Contact) {
         this.patientName = patientName;
         this.patientId = patientId;
-        this.dob = DOB;
+        this.dob = dob;
         this.height = height;
         this.weight = weight;
         this.allergies = allergies;
@@ -34,6 +45,10 @@ public class PatientInfoRequest {
         this.disease = disease;
         this.bloodGroup = bloodGroup;
         this.injuryHistory = injuryHistory;
+        this.nominee1Name = nominee1Name;
+        this.nominee1Contact = nominee1Contact;
+        this.nominee2Name = nominee2Name;
+        this.nominee2Contact = nominee2Contact;
     }
 
     public String getPatientName() {
@@ -74,5 +89,21 @@ public class PatientInfoRequest {
 
     public String getInjuryHistory() {
         return injuryHistory;
+    }
+
+    public String getNominee1Name() {
+        return nominee1Name;
+    }
+
+    public String getNominee1Contact() {
+        return nominee1Contact;
+    }
+
+    public String getNominee2Name() {
+        return nominee2Name;
+    }
+
+    public String getNominee2Contact() {
+        return nominee2Contact;
     }
 }

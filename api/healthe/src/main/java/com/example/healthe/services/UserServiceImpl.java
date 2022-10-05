@@ -40,10 +40,10 @@ public class UserServiceImpl implements User{
 
     @Override
     public String saveUser(PatientInfoRequest patientInfo) {
-        patientRepo.save(new PatientInfo(patientInfo.getPatientName(), patientInfo.getPatientId(),
-                patientInfo.getDOB(), patientInfo.getHeight(),patientInfo.getWeight(),
-                patientInfo.getAllergies(),patientInfo.getMedication(),patientInfo.getDisease(),
-                patientInfo.getBloodGroup(),patientInfo.getInjuryHistory()));
+        patientRepo.save(new PatientInfo(patientInfo.getPatientName(),patientInfo.getPatientId(),patientInfo.getDOB(),
+                patientInfo.getHeight(),patientInfo.getWeight(),patientInfo.getAllergies(),patientInfo.getMedication(),
+                patientInfo.getDisease(),patientInfo.getBloodGroup(),patientInfo.getInjuryHistory(),patientInfo.getNominee1Name(),
+                patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),patientInfo.getNominee2Contact()));
         return "Submitted Successfully";
     }
 
@@ -69,7 +69,11 @@ public class UserServiceImpl implements User{
                 patientList.getMedication(),
                 patientList.getDisease(),
                 patientList.getBloodGroup(),
-                patientList.getInjuryHistory()
+                patientList.getInjuryHistory(),
+                patientList.getNominee1Name(),
+                patientList.getNominee1Contact(),
+                patientList.getNominee2Name(),
+                patientList.getNominee2Contact()
         );
         return pRequest;
     }

@@ -36,12 +36,25 @@ public class PatientInfo {
     @Column(name = "injury_history")
     private String injuryHistory;
 
+    @Column(name = "nominee1_name")
+    private String nominee1Name;
+
+    @Column(name = "nominee1_contact")
+    private String nominee1Contact;
+
+    @Column(name = "nominee2_name")
+    private String nominee2Name;
+
+    @Column(name = "nominee2_contact")
+    private String nominee2Contact;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     public PatientInfo(String patientName, String patientId, String DOB, float height, float weight, String allergies,
-                       String medication, String disease, String bloodGroup, String injuryHistory) {
+                       String medication, String disease, String bloodGroup, String injuryHistory, String nominee1Name,
+                       String nominee1Contact, String nominee2Name, String nominee2Contact) {
         this.patientName = patientName;
         this.patientId = patientId;
         this.DOB = DOB;
@@ -52,6 +65,10 @@ public class PatientInfo {
         this.disease = disease;
         this.bloodGroup = bloodGroup;
         this.injuryHistory = injuryHistory;
+        this.nominee1Name = nominee1Name;
+        this.nominee1Contact = nominee1Contact;
+        this.nominee2Name = nominee2Name;
+        this.nominee2Contact = nominee2Contact;
     }
 
     public PatientInfo() {
@@ -101,11 +118,27 @@ public class PatientInfo {
         return id;
     }
 
+    public String getNominee1Name() {
+        return nominee1Name;
+    }
+
+    public String getNominee1Contact() {
+        return nominee1Contact;
+    }
+
+    public String getNominee2Name() {
+        return nominee2Name;
+    }
+
+    public String getNominee2Contact() {
+        return nominee2Contact;
+    }
+
     @Override
     public String toString() {
-        return "patientInfo{" +
+        return "PatientInfo{" +
                 "patientName='" + patientName + '\'' +
-                ", patientId=" + patientId +
+                ", patientId='" + patientId + '\'' +
                 ", DOB='" + DOB + '\'' +
                 ", height=" + height +
                 ", weight=" + weight +
@@ -113,6 +146,12 @@ public class PatientInfo {
                 ", medication='" + medication + '\'' +
                 ", disease='" + disease + '\'' +
                 ", bloodGroup='" + bloodGroup + '\'' +
+                ", injuryHistory='" + injuryHistory + '\'' +
+                ", nominee1Name='" + nominee1Name + '\'' +
+                ", nominee1Contact='" + nominee1Contact + '\'' +
+                ", nominee2Name='" + nominee2Name + '\'' +
+                ", nominee2Contact='" + nominee2Contact + '\'' +
+                ", id=" + id +
                 '}';
     }
 }
