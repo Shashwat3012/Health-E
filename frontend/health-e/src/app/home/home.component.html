@@ -3,6 +3,8 @@
     <div>
         <mat-icon mat-fab style="float:right;height:60px;width:60px;font-size: 3rem;cursor:pointer;"
             matTooltip="Enter Data" matTooltipPosition="left" (click)="openDialog()">note_add</mat-icon>
+        <mat-icon mat-fab style="height:60px;width:60px;font-size: 3rem;cursor:pointer;" matTooltip="View My Data"
+            matTooltipPosition="left" (click)="viewPatientData()">assessment</mat-icon>
     </div>
     <div class="mat-elevation-z8" style="width:80%;margin-left: 10%;">
         <table mat-table [dataSource]="dataSource" matSort>
@@ -39,8 +41,11 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row">
-                    <mat-icon matTooltip="Approve Request" matTooltipPosition="right" (click)="statusUpdate('Approved',row.requestId)" style="cursor:pointer;">done_all</mat-icon>
-                    <mat-icon matTooltip="Reject Request" matTooltipPosition="right" (click)="statusUpdate('Rejected',row.requestId)" style="cursor:pointer;">highlight_off</mat-icon>
+                    <mat-icon matTooltip="Approve Request" matTooltipPosition="right"
+                        (click)="statusUpdate('Approved',row.requestId)" style="cursor:pointer;">done_all</mat-icon>
+                    <mat-icon matTooltip="Reject Request" matTooltipPosition="right"
+                        (click)="statusUpdate('Rejected',row.requestId)" style="cursor:pointer;">highlight_off
+                    </mat-icon>
                 </td>
             </ng-container>
 

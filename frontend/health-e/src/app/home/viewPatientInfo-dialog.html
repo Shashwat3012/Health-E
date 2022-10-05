@@ -1,0 +1,91 @@
+
+<div>
+    <form [formGroup]="form" class="formClass">
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClassText">
+                <mat-label>Patient Name</mat-label>
+                <input matInput formControlName="patientName" [readonly]="true">
+                <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field> &nbsp;
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Date of Birth</mat-label>
+                <input type="date" matInput formControlName="dob" [readonly]="true">
+                <!-- <mat-icon matSuffix>invert_colors</mat-icon> -->
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Blood Group</mat-label>
+                <input matInput formControlName="bloodgroup" [readonly]="true">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Height</mat-label>
+                <input type="number" matInput formControlName="height" [readonly]="true">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Weight</mat-label>
+                <input type="number" matInput formControlName="weight" [readonly]="true">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Allergies</mat-label>
+            <textarea matInput formControlName="allergies" [readonly]="true"></textarea>
+            <mat-icon matSuffix>masks</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Diseases</mat-label>
+            <textarea matInput formControlName="diseases" [readonly]="true"></textarea>
+            <mat-icon matSuffix>group_work</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Injury History</mat-label>
+            <textarea matInput formControlName="injuryHistory" [readonly]="true"></textarea>
+            <mat-icon matSuffix>healing</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Medication</mat-label>
+            <textarea matInput formControlName="medication" [readonly]="true"></textarea>
+            <mat-icon matSuffix>medication</mat-icon>
+        </mat-form-field>
+
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 1 Name</mat-label>
+                <input matInput formControlName="nominee1Name" [readonly]="true">
+                <!-- <mat-icon matSuffix>invert_colors</mat-icon> -->
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 1 Contact</mat-label>
+                <input matInput formControlName="nominee1Contact" [readonly]="true">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 2 Name</mat-label>
+                <input matInput formControlName="nominee2Name" [readonly]="true">
+                <!-- <mat-icon matSuffix>invert_colors</mat-icon> -->
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 2 Contact</mat-label>
+                <input matInput formControlName="nominee2Contact" [readonly]="true">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div style="display: flex;flex-direction: column;">
+            <div style="margin-left: 45%;">
+
+                <button mat-raised-button class="button" (click)="close()">Close</button>
+            </div>
+        </div>
+    </form>
+</div>

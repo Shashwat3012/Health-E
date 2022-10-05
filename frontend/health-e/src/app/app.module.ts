@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
-import { HomeComponent, PatientInfoDialog } from './home/home.component';
+import { HomeComponent, PatientInfoDialog, ViewPatientInfoDetails } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -45,7 +45,8 @@ const routes: Routes = [
     DoctorDashboardComponent,
     DoctorRequestDialog,
     PatientInfoDetails,
-    MaskedDetails
+    MaskedDetails,
+    ViewPatientInfoDetails
   ],
   imports: [
     BrowserModule,
