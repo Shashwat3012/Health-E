@@ -104,10 +104,7 @@ export class DoctorDashboardComponent implements OnInit {
 export class DoctorRequestDialog implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DoctorRequestDialog>,
-    private userService: UserService, private _snackbar: MatSnackBar) { }
-
-  ngOnInit(): void {
-  }
+    private userService: UserService, private _snackbar: MatSnackBar) { } 
   form: FormGroup = new FormGroup({
     patientid: new FormControl(''),
     doctorid: new FormControl(''),
@@ -115,10 +112,15 @@ export class DoctorRequestDialog implements OnInit {
     date: new FormControl('')
   });
 
+  ngOnInit(): void {
+    this.form.get('doctorid')!.setValue(sessionStorage.getItem("userId"));
+    this.form.get('doctorid')!.disable();
+  }
+
   submit() {
     const request = {
       patientId: this.form.get('patientid')!.value,
-      doctorId: this.form.get('doctorid')!.value,
+      doctorId: sessionStorage.getItem("userId"),
       reason: this.form.get('reason')!.value,
       date: this.form.get('date')!.value,
       status: "Pending"
@@ -126,8 +128,8 @@ export class DoctorRequestDialog implements OnInit {
     this.userService.requestData(request).subscribe((response) => {
       this._snackbar.open("Successfully Requested Data from Patient", "Close", {
         duration: 1500,
-
       });
+      this.dialogRef.close();
     })
   }
 

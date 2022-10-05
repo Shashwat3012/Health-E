@@ -83,6 +83,10 @@ export class PatientInfoDialog implements OnInit {
     medication: new FormControl(''),
     height: new FormControl(''),
     weight: new FormControl(''),
+    nominee1Name: new FormControl(''),
+    nominee1Contact: new FormControl(''),
+    nominee2Name: new FormControl(''),
+    nominee2Contact: new FormControl('')
   });
 
   submit() {
@@ -96,7 +100,11 @@ export class PatientInfoDialog implements OnInit {
       allergies: this.form.get('allergies')!.value,
       disease: this.form.get('diseases')!.value,
       injuryHistory: this.form.get('injuryHistory')!.value,
-      medication: this.form.get('medication')!.value
+      medication: this.form.get('medication')!.value,
+      nominee1Name: this.form.get('nominee1Name')!.value,
+      nominee1Contact: this.form.get('nominee1Contact')!.value,
+      nominee2Name: this.form.get('nominee2Name')!.value,
+      nominee2Contact: this.form.get('nominee2Contact')!.value
     }
     this.userService.submitPatientData(user).subscribe((response) => {
       this._snackbar.open("Successfully submitted info", "Close", {
