@@ -1,36 +1,36 @@
 <div>
-    
-            <form [formGroup]="form" class="formClass">
-               
-                <mat-form-field appearance="outline" class="formFieldClass">
-                    <mat-label>Patient UUID</mat-label>
-                    <input matInput formControlName="patientid">
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="formFieldClass">
-                    <mat-label>Doctor id</mat-label>
-                    <input matInput formControlName="doctorid">
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="formFieldClass">
-                    <mat-label>Reason</mat-label>
-                    <input matInput formControlName="reason">
-                    <mat-icon matSuffix>help</mat-icon>
-                </mat-form-field>
-                <mat-form-field appearance="outline" class="formFieldClass">
-                    <mat-label>Date</mat-label>
-                    <input type="date" matInput formControlName="date">
-                </mat-form-field>
-                <!-- <mat-form-field appearance="outline">
+
+    <form [formGroup]="form" class="formClass">
+
+        <mat-form-field appearance="outline" class="formFieldClass">
+            <mat-label>Patient UUID</mat-label>
+            <input matInput formControlName="patientid">
+            <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClass">
+            <mat-label>Doctor id</mat-label>
+            <input matInput formControlName="doctorid">
+            <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClass">
+            <mat-label>Reason</mat-label>
+            <input matInput formControlName="reason">
+            <mat-icon matSuffix>help</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClass">
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="date">
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
                     <mat-label>Medication</mat-label>
                     <input matInput formControlName="medication">
                     <mat-icon matSuffix>account_circle</mat-icon>
                 </mat-form-field> -->
-                
-                <div class="button">
-                    <button mat-raised-button class="button" (click)="submit()">Submit</button>
-                    <button mat-raised-button class="button" (click)="close()">Close</button>
-                </div>
-            </form>
-        
+
+        <div class="button">
+            <button mat-raised-button class="button1" (click)="submit()">Submit</button>
+            <button mat-raised-button class="button2" (click)="close()">Close</button>
+        </div>
+    </form>
+
 </div>
