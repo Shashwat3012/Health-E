@@ -69,6 +69,16 @@ export class DoctorDashboardComponent implements OnInit {
       });
     })
   }
+  fetchPatientByDisease() {
+    const disease = this.form.get('patientId')!.value;
+    this.userService.fetchPatientByDisease(disease).subscribe((response) => {
+      this.dialog.open(MaskedDetails, {
+        height: '600px',
+        width: '600px',
+        data: response
+      });
+    })
+  }
   viewPatientData(patientId: string, status: string) {
     this.userService.fetchPatient(patientId).subscribe((response) => {
       if (status == 'Approved') {
@@ -104,7 +114,7 @@ export class DoctorDashboardComponent implements OnInit {
 export class DoctorRequestDialog implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DoctorRequestDialog>,
-    private userService: UserService, private _snackbar: MatSnackBar) { } 
+    private userService: UserService, private _snackbar: MatSnackBar) { }
   form: FormGroup = new FormGroup({
     patientid: new FormControl(''),
     doctorid: new FormControl(''),
@@ -163,7 +173,7 @@ export class PatientInfoDetails implements OnInit {
     this.form.get('weight')!.setValue(this.data.weight);
     this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
     this.form.get('allergies')!.setValue(this.data.allergies);
-    this.form.get('diseases')!.setValue(this.data.diseases);
+    this.form.get('diseases')!.setValue(this.data.disease);
     this.form.get('injuryHistory')!.setValue(this.data.injuryHistory);
     this.form.get('medication')!.setValue(this.data.medication);
 

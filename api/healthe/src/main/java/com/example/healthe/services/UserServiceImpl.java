@@ -100,6 +100,32 @@ public class UserServiceImpl implements User{
     }
 
     @Override
+    public ArrayList<PatientInfoRequest> getPatientInfoByDisease(String disease) {
+        List<PatientInfo> patientList =  patientRepo.findByPatientsByDisease(disease);
+        ArrayList<PatientInfoRequest> pList = new ArrayList<>();
+        for(PatientInfo patientObject: patientList) {
+            PatientInfoRequest pRequest = new PatientInfoRequest(
+                    patientObject.getPatientName(),
+                    patientObject.getPatientId(),
+                    patientObject.getDOB(),
+                    patientObject.getHeight(),
+                    patientObject.getWeight(),
+                    patientObject.getAllergies(),
+                    patientObject.getMedication(),
+                    patientObject.getDisease(),
+                    patientObject.getBloodGroup(),
+                    patientObject.getInjuryHistory(),
+                    patientObject.getNominee1Name(),
+                    patientObject.getNominee1Contact(),
+                    patientObject.getNominee2Name(),
+                    patientObject.getNominee2Contact()
+            );
+            pList.add(pRequest);
+        }
+        return  pList;
+    }
+
+    @Override
     public String updateRequestStatus(UpdateDoctorRequest docRequest) {
         doctorRepo.updateStatus(docRequest.getStatus(),docRequest.getRequestId());
         return docRequest.getStatus();

@@ -2,6 +2,7 @@ package com.example.healthe.services;
 
 import com.example.healthe.data.request.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface User {
@@ -22,4 +23,6 @@ public interface User {
     List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(String doctorId);
 
     String editUser(PatientInfoRequest patientInfo);
+
+    ArrayList<PatientInfoRequest> getPatientInfoByDisease(String disease);
 }

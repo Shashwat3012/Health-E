@@ -36,4 +36,8 @@ public interface PatientInfoRepository extends JpaRepository<PatientInfo, Long> 
                       @Param(value = "nominee1Contact") String nominee1Contact,
                       @Param(value = "nominee2Name") String nominee2Name,
                       @Param(value = "nominee2Contact") String nominee2Contact);
+
+
+    @Query("Select u from PatientInfo u WHERE u.disease=:disease")
+    List<PatientInfo> findByPatientsByDisease(@Param("disease")String disease);
 }

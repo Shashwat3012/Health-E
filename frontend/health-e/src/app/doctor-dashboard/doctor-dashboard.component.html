@@ -10,7 +10,7 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Search Patient</mat-label>
                     <input matInput formControlName="patientId">
-                    <mat-icon matSuffix (click)="fetchPatient()">search</mat-icon>
+                    <mat-icon matSuffix >search</mat-icon>
                 </mat-form-field> &nbsp;
             </form>
             <!-- <div *ngIf="patientName != ''">
@@ -20,7 +20,12 @@
                 <span>Weight: {{weight}}</span> &nbsp;
             </div> -->
         </div>
-
+            <div>
+                <button mat-raised-button class="button" (click)="fetchPatient()">Search By Id</button>
+            </div>
+            <div>
+                <button mat-raised-button class="button" (click)="fetchPatientByDisease()">Search By Disease</button>
+            </div>
     </div>
 
     <div class="mat-elevation-z8" style="width:80%;margin-left: 10%;">

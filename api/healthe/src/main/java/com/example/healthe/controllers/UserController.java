@@ -4,6 +4,8 @@ import com.example.healthe.data.request.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -62,6 +64,15 @@ public class UserController {
     public PatientInfoRequest getPatientInfo(@RequestParam String patientId) throws InterruptedException {
         try{
             return userService.getPatientInfo(patientId);
+        } catch(Exception e){
+            throw e;
+        }
+    }
+
+    @GetMapping("/patientInfoByDisease")
+    public ArrayList<PatientInfoRequest> getPatientInfoByDisease(@RequestParam String disease) throws InterruptedException {
+        try{
+            return userService.getPatientInfoByDisease(disease);
         } catch(Exception e){
             throw e;
         }
