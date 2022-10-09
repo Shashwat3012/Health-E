@@ -90,6 +90,16 @@ public class UserServiceImpl implements User{
     }
 
     @Override
+    public String editUser(PatientInfoRequest patientInfo) {
+        patientRepo.updatePatientInfo(patientInfo.getPatientId(),patientInfo.getHeight(),
+                patientInfo.getWeight(),patientInfo.getAllergies(),patientInfo.getMedication(),
+                patientInfo.getDisease(),patientInfo.getBloodGroup(),patientInfo.getInjuryHistory(),
+                patientInfo.getNominee1Name(),patientInfo.getNominee1Contact(),patientInfo.getNominee2Name(),
+                patientInfo.getNominee2Contact());
+        return "Submitted Successfully";
+    }
+
+    @Override
     public String updateRequestStatus(UpdateDoctorRequest docRequest) {
         doctorRepo.updateStatus(docRequest.getStatus(),docRequest.getRequestId());
         return docRequest.getStatus();

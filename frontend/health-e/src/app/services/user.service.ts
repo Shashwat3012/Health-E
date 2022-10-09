@@ -23,6 +23,10 @@ export class UserService {
         return this.http.post('http://localhost:8080/savePatientData', user, { ...this.httpOptions, responseType: 'text' })
     }
 
+    editPatientData(user: any): Observable<any> {
+        return this.http.post('http://localhost:8080/editPatientData', user, { ...this.httpOptions, responseType: 'text' })
+    }
+
     requestData(request: any): Observable<any> {
         return this.http.post('http://localhost:8080/requestPatientInfo', request, { ...this.httpOptions, responseType: 'text' })
     }

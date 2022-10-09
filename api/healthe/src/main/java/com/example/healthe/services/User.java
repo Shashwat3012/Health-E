@@ -20,4 +20,6 @@ public interface User {
     String updateRequestStatus(UpdateDoctorRequest docRequest);
 
     List<com.example.healthe.entity.DoctorRequest> getRequestsByDoctor(String doctorId);
+
+    String editUser(PatientInfoRequest patientInfo);
 }

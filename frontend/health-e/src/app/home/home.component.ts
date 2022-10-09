@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
         data: response
       });
     })
-}
+  }
 }
 
 @Component({
@@ -91,7 +91,11 @@ export class ViewPatientInfoDetails implements OnInit {
     nominee2Name: new FormControl(''),
     nominee2Contact: new FormControl('')
   });
-  constructor(public dialogRef: MatDialogRef<ViewPatientInfoDetails>, @Inject(MAT_DIALOG_DATA) public data: any,) { }
+  constructor(public dialogRef: MatDialogRef<ViewPatientInfoDetails>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private userService: UserService,
+    private _snackbar: MatSnackBar) { }
+
   ngOnInit(): void {
     this.form.get('patientName')!.setValue(this.data.patientName);
     this.form.get('dob')!.setValue(this.data.dob);
@@ -107,19 +111,45 @@ export class ViewPatientInfoDetails implements OnInit {
     this.form.get('nominee2Name')!.setValue(this.data.nominee2Name);
     this.form.get('nominee2Contact')!.setValue(this.data.nominee2Contact);
 
-    this.form.get('patientName')!.disable();
-    this.form.get('dob')!.disable();
-    this.form.get('height')!.disable();
-    this.form.get('weight')!.disable();
-    this.form.get('bloodgroup')!.disable();
-    this.form.get('allergies')!.disable();
-    this.form.get('diseases')!.disable();
-    this.form.get('injuryHistory')!.disable();
-    this.form.get('medication')!.disable();
-    this.form.get('nominee1Name')!.disable();
-    this.form.get('nominee1Contact')!.disable();
-    this.form.get('nominee2Name')!.disable();
-    this.form.get('nominee2Contact')!.disable();
+    // this.form.get('patientName')!.disable();
+    // this.form.get('dob')!.disable();
+    // this.form.get('height')!.disable();
+    // this.form.get('weight')!.disable();
+    // this.form.get('bloodgroup')!.disable();
+    // this.form.get('allergies')!.disable();
+    // this.form.get('diseases')!.disable();
+    // this.form.get('injuryHistory')!.disable();
+    // this.form.get('medication')!.disable();
+    // this.form.get('nominee1Name')!.disable();
+    // this.form.get('nominee1Contact')!.disable();
+    // this.form.get('nominee2Name')!.disable();
+    // this.form.get('nominee2Contact')!.disable();
+  }
+
+  editInfo() {
+    const user = {
+      patientName: this.form.get('firstName')!.value + " " + this.form.get('lastName')!.value,
+      patientId: sessionStorage.getItem("userId"),
+      dob: this.form.get('dob')!.value,
+      height: this.form.get('height')!.value,
+      weight: this.form.get('weight')!.value,
+      bloodGroup: this.form.get('bloodgroup')!.value,
+      allergies: this.form.get('allergies')!.value,
+      disease: this.form.get('diseases')!.value,
+      injuryHistory: this.form.get('injuryHistory')!.value,
+      medication: this.form.get('medication')!.value,
+      nominee1Name: this.form.get('nominee1Name')!.value,
+      nominee1Contact: this.form.get('nominee1Contact')!.value,
+      nominee2Name: this.form.get('nominee2Name')!.value,
+      nominee2Contact: this.form.get('nominee2Contact')!.value
+    }
+    this.userService.editPatientData(user).subscribe((response) => {
+      this._snackbar.open(response, "Close", {
+        duration: 1500,
+
+      });
+      this.dialogRef.close();
+    })
   }
 
   close() {

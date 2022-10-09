@@ -27,6 +27,12 @@ public class UserController {
         return userService.saveUser(patientInfo);
     }
 
+    @PostMapping("/editPatientData")
+    public String editData(@RequestBody PatientInfoRequest patientInfo) {
+        return userService.editUser(patientInfo);
+    }
+
+
     @PostMapping("/requestPatientInfo")
     public String requestPatientInfo(@RequestBody DoctorRequest doctorRequest){
         return userService.requestData(doctorRequest);
