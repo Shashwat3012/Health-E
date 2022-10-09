@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NomineeDashboardComponent } from './nominee-dashboard/nominee-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   //{ path: 'second-component', component: SecondComponent },
-  { path: 'doctor-dashboard', component: DoctorDashboardComponent }
+  { path: 'doctor-dashboard', component: DoctorDashboardComponent },
+  { path: 'nominee-dashboard', component: NomineeDashboardComponent }
 ];
 
 @NgModule({
@@ -47,7 +49,8 @@ const routes: Routes = [
     PatientInfoDetails,
     MaskedDetails,
     ViewPatientInfoDetails,
-    PatientInfoByDisease
+    PatientInfoByDisease,
+    NomineeDashboardComponent
   ],
   imports: [
     BrowserModule,

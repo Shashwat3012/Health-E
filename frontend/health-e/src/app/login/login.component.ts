@@ -19,33 +19,40 @@ export class LoginComponent implements OnInit {
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
-    role: new FormControl('')
+    role: new FormControl(''),
+    patientId: new FormControl(''),
+    nomineeName: new FormControl('')
   });
 
   submit() {
     const user = {
-      userName: this.form.get('username')!.value,
-      password: this.form.get('password')!.value,
-      role: this.form.get('role')!.value,
+      userName: this.form.get('username')!.value || "",
+      password: this.form.get('password')!.value || "",
+      role: this.form.get('role')!.value || "",
+      patientId: this.form.get('patientId')!.value || "",
+      nomineeName: this.form.get('nomineeName')!.value || "",
     }
     this.userService.login(user).subscribe((response) => {
       this._snackBar.open("Login Successful", "Close", {
         duration: 1500,
-        
+
       });
       sessionStorage.setItem("userId", response);
       sessionStorage.setItem("role", user.role);
       if (user.role == "Patient") {
         this.router.navigate(['/home']);
       }
-      else {
+      if (user.role == "Doctor") {
         this.router.navigate(['/doctor-dashboard'])
       }
+      if (user.role == "Nominee") {
+        this.router.navigate(['/nominee-dashboard'])
+      }
     })
-    //  console.log()
-  }
+  //  console.log()
+}
 
-  register() {
-    this.router.navigate(['/register']);
-  }
+register() {
+  this.router.navigate(['/register']);
+}
 }

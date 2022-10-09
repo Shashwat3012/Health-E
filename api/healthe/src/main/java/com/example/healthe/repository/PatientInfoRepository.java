@@ -40,4 +40,8 @@ public interface PatientInfoRepository extends JpaRepository<PatientInfo, Long> 
 
     @Query("Select u from PatientInfo u WHERE u.disease=:disease")
     List<PatientInfo> findByPatientsByDisease(@Param("disease")String disease);
+
+    @Query("Select u from PatientInfo u WHERE u.patientId=:patientId AND (u.nominee1Name =:nomineeName OR u.nominee2Name=:nomineeName)")
+    PatientInfo findByPatientsByNominee(@Param("patientId")String patientId, @Param("nomineeName")String nomineeName);
+
 }

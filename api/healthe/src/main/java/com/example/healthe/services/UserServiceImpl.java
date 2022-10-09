@@ -30,11 +30,22 @@ public class UserServiceImpl implements User{
 
     @Override
     public String loginUser(LoginUserRequest userRequest) {
-        com.example.healthe.entity.User user = userRepo.findByUsernameAndPassword(userRequest.getUserName(), userRequest.getPassword());
-        if (user == null) {
-            return "User Not Found!";
-        } else {
-            return user.getUuid();
+        if(userRequest.getRole() != "Nominee") {
+            com.example.healthe.entity.User user =
+                    userRepo.findByUsernameAndPassword(userRequest.getUserName(), userRequest.getPassword());
+            if (user == null) {
+                return "User Not Found!";
+            } else {
+                return user.getUuid();
+            }
+        } else{
+            PatientInfo pInfo = patientRepo.findByPatientsByNominee(userRequest.getPatientId(),
+                                                                userRequest.getNomineeName());
+            if (pInfo == null) {
+                return "User Not Found!";
+            } else {
+                return "Successful Login";
+            }
         }
     }
 

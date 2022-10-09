@@ -1,6 +1,6 @@
 package com.example.healthe.data.request;
 
-public class RegisterUserRequest extends LoginUserRequest {
+public class RegisterUserRequest extends LoginRequest {
     private final String firstName;
     private final String lastName;
 
