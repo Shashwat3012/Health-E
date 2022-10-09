@@ -30,10 +30,10 @@ export class HomeComponent implements OnInit {
   patientId = "";
   ngOnInit() {
     this.patientId = sessionStorage.getItem("userId") || "";
-    this.fetchPatientRequests(this.patientId);
+    this.fetchPatientRequests();
   }
 
-  fetchPatientRequests(patientId: string) {
+  fetchPatientRequests() {
     this.userService.fetchPatientRequests(this.patientId).subscribe((response) => {
       console.log(response);
       this.dataSource = response;

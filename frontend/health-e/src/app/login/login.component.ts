@@ -35,24 +35,27 @@ export class LoginComponent implements OnInit {
     this.userService.login(user).subscribe((response) => {
       this._snackBar.open("Login Successful", "Close", {
         duration: 1500,
-
       });
-      sessionStorage.setItem("userId", response);
-      sessionStorage.setItem("role", user.role);
       if (user.role == "Patient") {
+        sessionStorage.setItem("userId", response);
+        sessionStorage.setItem("role", user.role);
         this.router.navigate(['/home']);
       }
       if (user.role == "Doctor") {
+        sessionStorage.setItem("userId", response);
+        sessionStorage.setItem("role", user.role);
         this.router.navigate(['/doctor-dashboard'])
       }
       if (user.role == "Nominee") {
+        sessionStorage.setItem("userId", user.patientId);
+        sessionStorage.setItem("role", user.role);
         this.router.navigate(['/nominee-dashboard'])
       }
     })
-  //  console.log()
-}
+    //  console.log()
+  }
 
-register() {
-  this.router.navigate(['/register']);
-}
+  register() {
+    this.router.navigate(['/register']);
+  }
 }

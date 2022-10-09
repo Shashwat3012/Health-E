@@ -3,6 +3,7 @@
         <mat-toolbar style="background-color: #FFB200;">
             <span *ngIf="role == 'Patient'">User Portal</span>
             <span *ngIf="role == 'Doctor'">Doctor Portal</span>
+            <span *ngIf="role == 'Nominee'">Nominee Portal</span>
             <span class="example-spacer"></span>
             <mat-icon style="cursor: pointer;font-size: 1.6rem;width:4%;" [matMenuTriggerFor]="menu">account_circle
             </mat-icon>
