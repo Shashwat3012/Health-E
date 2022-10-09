@@ -111,8 +111,8 @@ export class ViewPatientInfoDetails implements OnInit {
     this.form.get('nominee2Name')!.setValue(this.data.nominee2Name);
     this.form.get('nominee2Contact')!.setValue(this.data.nominee2Contact);
 
-    // this.form.get('patientName')!.disable();
-    // this.form.get('dob')!.disable();
+    this.form.get('patientName')!.disable();
+    this.form.get('dob')!.disable();
     // this.form.get('height')!.disable();
     // this.form.get('weight')!.disable();
     // this.form.get('bloodgroup')!.disable();
@@ -128,7 +128,7 @@ export class ViewPatientInfoDetails implements OnInit {
 
   editInfo() {
     const user = {
-      patientName: this.form.get('firstName')!.value + " " + this.form.get('lastName')!.value,
+      patientName: this.form.get('patientName')!.value,
       patientId: sessionStorage.getItem("userId"),
       dob: this.form.get('dob')!.value,
       height: this.form.get('height')!.value,
