@@ -1,6 +1,7 @@
 package com.example.healthe.services;
 
 import com.example.healthe.data.request.*;
+import com.example.healthe.entity.DoctorInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,4 +26,8 @@ public interface User {
     String editUser(PatientInfoRequest patientInfo);
 
     ArrayList<PatientInfoRequest> getPatientInfoByDisease(String disease);
+
+    String updateDoctorUser(String doctorId);
+
+    List<DoctorInfo> fetchAllDoctors();
 }

@@ -66,7 +66,9 @@ public class UserServiceImpl implements User{
             if (pInfo == null) {
                 return "User Not Found!";
             } else {
-                if(pInfo.getStatus() == "Approved") return "Successful Login";
+                if(pInfo.getStatus() == "Approved") {
+                    return "Successful Login";
+                }
                 else return "Status Pending";
             }
         }
@@ -157,6 +159,17 @@ public class UserServiceImpl implements User{
             pList.add(pRequest);
         }
         return  pList;
+    }
+
+    @Override
+    public String updateDoctorUser(String doctorId) {
+        doctorUserRepo.updateDoctorStatus("Approved",doctorId);
+        return "Approved";
+    }
+
+    @Override
+    public List<DoctorInfo> fetchAllDoctors() {
+        return doctorUserRepo.findAll();
     }
 
     @Override

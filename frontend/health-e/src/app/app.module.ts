@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NomineeDashboardComponent } from './nominee-dashboard/nominee-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   //{ path: 'second-component', component: SecondComponent },
   { path: 'doctor-dashboard', component: DoctorDashboardComponent },
-  { path: 'nominee-dashboard', component: NomineeDashboardComponent }
+  { path: 'nominee-dashboard', component: NomineeDashboardComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent }
 ];
 
 @NgModule({
@@ -50,7 +52,8 @@ const routes: Routes = [
     MaskedDetails,
     ViewPatientInfoDetails,
     PatientInfoByDisease,
-    NomineeDashboardComponent
+    NomineeDashboardComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

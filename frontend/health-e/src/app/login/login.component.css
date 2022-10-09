@@ -7,8 +7,8 @@
 } */
 .login {
     /* background-color: #8FE3CF; */
-    width: 30%;
-    margin-left: 38%;
+    width: 40%;
+    margin-left: 32%;
     margin-top: 10%;
 }
 
@@ -17,13 +17,14 @@
     margin-top: 5%;
     cursor: pointer;
 }
+
 .button1 {
     margin-left: 3%;
     margin-top: 5%;
     cursor: pointer;
 }
 
-.formClass{
+.formClass {
     margin-left: 20%;
 }
 
@@ -33,4 +34,8 @@
 
 .mat-radio-inner-circle {
     background: purple;
+}
+
+.formFieldClass {
+    width: 80%;
 }

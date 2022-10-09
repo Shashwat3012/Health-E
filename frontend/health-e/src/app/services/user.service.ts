@@ -55,4 +55,12 @@ export class UserService {
         return this.http.get('http://localhost:8080/getRequestsByDoctor', { ...this.httpOptions, params: queryParams })
     }
 
+    updateDoctorUser(request: any): Observable<any> {
+        return this.http.post('http://localhost:8080/updateDoctorUser', request, { ...this.httpOptions, responseType: 'text' })
+    }
+
+    fetchAllDoctors(): Observable<any> {
+        return this.http.get('http://localhost:8080/fetchAllDoctors', { ...this.httpOptions })
+    }
+
 }

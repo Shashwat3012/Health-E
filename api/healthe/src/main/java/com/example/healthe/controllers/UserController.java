@@ -24,6 +24,11 @@ public class UserController {
         return userService.registerUser(userRequest);
     }
 
+    @PostMapping("/updateDoctorUser")
+    public String updateDoctorUser(@RequestBody String doctorId) {
+        return userService.updateDoctorUser(doctorId);
+    }
+
     @PostMapping("/savePatientData")
     public String saveData(@RequestBody PatientInfoRequest patientInfo) {
         return userService.saveUser(patientInfo);
@@ -81,6 +86,16 @@ public class UserController {
     @PostMapping("/updateRequestStatus")
     public String updateRequestStatus(@RequestBody UpdateDoctorRequest docRequest){
         return userService.updateRequestStatus(docRequest);
+    }
+
+    @GetMapping("/fetchAllDoctors")
+    public List<com.example.healthe.entity.DoctorInfo> fetchAllDoctors() throws InterruptedException {
+        try{
+            return userService.fetchAllDoctors();
+        } catch(Exception e){
+            throw e;
+        }
+
     }
 
 }
