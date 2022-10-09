@@ -6,13 +6,15 @@ public class LoginUserRequest {
     private final String password;
     private final String patientId;
     private final String nomineeName;
+    private final String license;
 
-    public LoginUserRequest(String userName, String role, String password, String patientId, String nomineeName) {
+    public LoginUserRequest(String userName, String role, String password, String patientId, String nomineeName, String license) {
         this.userName = userName;
         this.role = role;
         this.password = password;
         this.patientId = patientId;
         this.nomineeName = nomineeName;
+        this.license = license;
     }
 
     public String getUserName() {
@@ -33,5 +35,9 @@ public class LoginUserRequest {
 
     public String getNomineeName() {
         return nomineeName;
+    }
+
+    public String getLicense() {
+        return license;
     }
 }

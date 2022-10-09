@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
     password: new FormControl(''),
     role: new FormControl(''),
     patientId: new FormControl(''),
-    nomineeName: new FormControl('')
+    nomineeName: new FormControl(''),
+    license: new FormControl('')
   });
 
   submit() {
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
       role: this.form.get('role')!.value || "",
       patientId: this.form.get('patientId')!.value || "",
       nomineeName: this.form.get('nomineeName')!.value || "",
+      license: this.form.get('license')!.value || ""
     }
     this.userService.login(user).subscribe((response) => {
       this._snackBar.open("Login Successful", "Close", {

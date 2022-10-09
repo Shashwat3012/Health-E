@@ -22,7 +22,9 @@ export class RegisterComponent implements OnInit {
     lastName: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
-    role: new FormControl('')
+    role: new FormControl(''),
+    license: new FormControl(''),
+    hospital: new FormControl('')
   });
 
   submit() {
@@ -32,11 +34,13 @@ export class RegisterComponent implements OnInit {
       userName: this.form.get('username')!.value,
       password: this.form.get('password')!.value,
       role: this.form.get('role')!.value,
+      license: this.form.get('license')!.value,
+      hospital: this.form.get('hospital')!.value,
+      status: "Pending"
     }
     this.userService.register(user).subscribe((response) => {
       this._snackbar.open("Register Successful", "Close", {
         duration: 1500,
-
       });
     })
   }

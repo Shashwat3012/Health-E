@@ -7,32 +7,39 @@
           <mat-radio-button value="Doctor">Doctor</mat-radio-button> &nbsp;&nbsp;
           <mat-radio-button value="Nominee">Nominee</mat-radio-button>
         </mat-radio-group>
-      <mat-form-field appearance="outline" style="margin-top:5%;" *ngIf="form.get('role')!.value == 'Patient' || form.get('role')!.value == 'Doctor'">
-        <mat-label>Username</mat-label>
-        <input matInput formControlName="username">
-        <mat-icon matSuffix>account_circle</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="form.get('role')!.value == 'Patient' || form.get('role')!.value == 'Doctor'">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password">
-        <mat-icon matSuffix>fingerprint</mat-icon>
-      </mat-form-field> &nbsp;
-
-      <mat-form-field appearance="outline" style="margin-top:5%;" *ngIf="form.get('role')!.value == 'Nominee'">
-        <mat-label>Patient Id</mat-label>
-        <input matInput formControlName="patientId">
-        <mat-icon matSuffix>account_circle</mat-icon>
-      </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="form.get('role')!.value == 'Nominee'">
-        <mat-label>Nominee Name</mat-label>
-        <input matInput formControlName="nomineeName">
-        <mat-icon matSuffix>account_circle</mat-icon>
-      </mat-form-field> &nbsp;
-      <div>
-        <button (click)="submit()" mat-button class="button">Login</button>
-        <button (click)="register()" mat-button class="button1">Register</button>
-      </div>
-    </form>
+        <mat-form-field appearance="outline" style="margin-top:5%;"
+          *ngIf="form.get('role')!.value == 'Patient' || form.get('role')!.value == 'Doctor'">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline"
+          *ngIf="form.get('role')!.value == 'Doctor'">
+          <mat-label>License</mat-label>
+          <input matInput formControlName="license">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline"
+          *ngIf="form.get('role')!.value == 'Patient' || form.get('role')!.value == 'Doctor'">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-icon matSuffix>fingerprint</mat-icon>
+        </mat-form-field> &nbsp;
+        <mat-form-field appearance="outline" style="margin-top:5%;" *ngIf="form.get('role')!.value == 'Nominee'">
+          <mat-label>Patient Id</mat-label>
+          <input matInput formControlName="patientId">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" *ngIf="form.get('role')!.value == 'Nominee'">
+          <mat-label>Nominee Name</mat-label>
+          <input matInput formControlName="nomineeName">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field> &nbsp;
+        <div>
+          <button (click)="submit()" mat-button class="button">Login</button>
+          <button (click)="register()" mat-button class="button1">Register</button>
+        </div>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>

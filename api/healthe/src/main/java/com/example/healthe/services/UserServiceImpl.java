@@ -1,7 +1,9 @@
 package com.example.healthe.services;
 
 import com.example.healthe.data.request.*;
+import com.example.healthe.entity.DoctorInfo;
 import com.example.healthe.entity.PatientInfo;
+import com.example.healthe.repository.DoctorRepository;
 import com.example.healthe.repository.DoctorRequestRepository;
 import com.example.healthe.repository.PatientInfoRepository;
 import com.example.healthe.repository.UserRepository;
@@ -20,17 +22,28 @@ public class UserServiceImpl implements User{
     private PatientInfoRepository patientRepo;
     @Autowired
     private DoctorRequestRepository doctorRepo;
+    @Autowired
+    private DoctorRepository doctorUserRepo;
 
     @Override
     public String registerUser(RegisterUserRequest userRequest) {
         String uuid = UUID.randomUUID().toString().substring(0, 6);
-        userRepo.save(new com.example.healthe.entity.User(userRequest.getFirstName(), userRequest.getLastName(), userRequest.getUserName(), userRequest.getPassword(), userRequest.getRole(), uuid));
+        if(userRequest.getRole() == "Patient") {
+            userRepo.save(new com.example.healthe.entity.User(userRequest.getFirstName(),
+                    userRequest.getLastName(), userRequest.getUserName(),
+                    userRequest.getPassword(), userRequest.getRole(), uuid));
+        }else{
+            doctorUserRepo.save(new DoctorInfo(userRequest.getFirstName(),
+                    userRequest.getLastName(), userRequest.getUserName(),
+                    userRequest.getPassword(), userRequest.getRole(), uuid,userRequest.getLicense(),
+                    userRequest.getHospital(),userRequest.getStatus()));
+        }
         return uuid;
     }
 
     @Override
     public String loginUser(LoginUserRequest userRequest) {
-        if(userRequest.getRole() != "Nominee") {
+        if(userRequest.getRole() == "Patient") {
             com.example.healthe.entity.User user =
                     userRepo.findByUsernameAndPassword(userRequest.getUserName(), userRequest.getPassword());
             if (user == null) {
@@ -38,13 +51,23 @@ public class UserServiceImpl implements User{
             } else {
                 return user.getUuid();
             }
-        } else{
+        }
+        else if(userRequest.getRole() == "Nominee"){
             PatientInfo pInfo = patientRepo.findByPatientsByNominee(userRequest.getPatientId(),
                                                                 userRequest.getNomineeName());
             if (pInfo == null) {
                 return "User Not Found!";
             } else {
                 return "Successful Login";
+            }
+        } else{
+            DoctorInfo pInfo = doctorUserRepo.findByUsernameAndPassword(userRequest.getUserName(),
+                    userRequest.getPassword());
+            if (pInfo == null) {
+                return "User Not Found!";
+            } else {
+                if(pInfo.getStatus() == "Approved") return "Successful Login";
+                else return "Status Pending";
             }
         }
     }

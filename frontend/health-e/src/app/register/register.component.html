@@ -1,17 +1,21 @@
 <div>
-    <mat-card class="login">
-      <mat-card-content>
-        <form [formGroup]="form" class="formClass">
-          <mat-form-field appearance="outline">
-            <mat-label>First Name</mat-label>
-            <input matInput formControlName="firstName">
-            <mat-icon matSuffix>account_circle</mat-icon>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Last Name</mat-label>
-            <input matInput formControlName="lastName">
-            <mat-icon matSuffix>account_circle</mat-icon>
-          </mat-form-field>
+  <mat-card class="login">
+    <mat-card-content>
+      <form [formGroup]="form" class="formClass">
+        <mat-radio-group aria-label="Select an option" formControlName="role" style="margin-left: 10%;">
+          <mat-radio-button value="Patient">Patient</mat-radio-button> &nbsp;&nbsp;
+          <mat-radio-button value="Doctor">Doctor</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field appearance="outline" style="margin-top: 2%;">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>
           <input matInput formControlName="username">
@@ -22,15 +26,21 @@
           <input type="password" matInput formControlName="password">
           <mat-icon matSuffix>fingerprint</mat-icon>
         </mat-form-field> &nbsp;
-        <mat-radio-group aria-label="Select an option" formControlName="role">
-          <mat-radio-button value="Patient">Patient</mat-radio-button> &nbsp;&nbsp;
-          <mat-radio-button value="Doctor">Doctor</mat-radio-button>
-        </mat-radio-group>
+        <mat-form-field appearance="outline" *ngIf="form.get('role')!.value == 'Doctor'">
+          <mat-label>License Number</mat-label>
+          <input matInput formControlName="license">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" *ngIf="form.get('role')!.value == 'Doctor'">
+          <mat-label>Hospital</mat-label>
+          <input matInput formControlName="hospital">
+          <mat-icon matSuffix>account_circle</mat-icon>
+        </mat-form-field>
         <div>
           <button (click)="submit()" mat-button class="button">Register</button>
           <button (click)="login()" mat-button class="button1">Login</button>
         </div>
       </form>
-      </mat-card-content>
-    </mat-card>
-  </div>
+    </mat-card-content>
+  </mat-card>
+</div>
