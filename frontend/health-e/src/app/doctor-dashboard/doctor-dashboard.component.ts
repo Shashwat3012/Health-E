@@ -42,7 +42,6 @@ export class DoctorDashboardComponent implements OnInit {
   medication = "";
   doctorId = sessionStorage.getItem("userId") || "";
   displayedColumns: string[] = ['requestId', 'patientId', 'reason', 'date', 'status', 'action'];
-  expandedElement!: PatientInfo | null;
   dataSource!: MatTableDataSource<RequestData>;
 
   constructor(public dialog: MatDialog, private userService: UserService) { }
@@ -72,9 +71,9 @@ export class DoctorDashboardComponent implements OnInit {
   fetchPatientByDisease() {
     const disease = this.form.get('patientId')!.value;
     this.userService.fetchPatientByDisease(disease).subscribe((response) => {
-      this.dialog.open(MaskedDetails, {
-        height: '600px',
-        width: '600px',
+      this.dialog.open(PatientInfoByDisease, {
+        height: '300px',
+        width: '800px',
         data: response
       });
     })
@@ -204,7 +203,7 @@ export class MaskedDetails implements OnInit {
     allergies: new FormControl(''),
     medication: new FormControl(''),
   });
-  constructor(public dialogRef: MatDialogRef<PatientInfoDetails>, @Inject(MAT_DIALOG_DATA) public data: any,) { }
+  constructor(public dialogRef: MatDialogRef<MaskedDetails>, @Inject(MAT_DIALOG_DATA) public data: any,) { }
   ngOnInit(): void {
     this.form.get('patientName')!.setValue(this.data.patientName);
     this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
@@ -215,6 +214,24 @@ export class MaskedDetails implements OnInit {
     this.form.get('bloodgroup')!.disable();
     this.form.get('allergies')!.disable();
     this.form.get('medication')!.disable();
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  templateUrl: './patient-info-by-disease.html',
+  styleUrls: ['./../home/home.component.css']
+})
+export class PatientInfoByDisease implements OnInit {
+  displayedColumns: string[] = ['patientName', 'patientId', 'allergies', 'medication', 'disease', 'bloodGroup'];
+  dataSource!: MatTableDataSource<PatientInfo>;
+  constructor(public dialogRef: MatDialogRef<PatientInfoByDisease>,
+    @Inject(MAT_DIALOG_DATA) public data: any,) { }
+  ngOnInit(): void {
+    this.dataSource = this.data;
   }
 
   close() {
