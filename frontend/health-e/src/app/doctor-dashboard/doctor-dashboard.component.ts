@@ -51,9 +51,9 @@ export class DoctorDashboardComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.fetchPatientRequests(this.doctorId);
+    this.fetchPatientRequests();
   }
-  fetchPatientRequests(doctorId: string) {
+  fetchPatientRequests() {
     this.userService.fetchRequestsByDoctor(this.doctorId).subscribe((response) => {
       this.dataSource = response;
     })
@@ -101,6 +101,7 @@ export class DoctorDashboardComponent implements OnInit {
       height: '600px',
       width: '600px',
     });
+    this.fetchPatientRequests();
   }
 
 }

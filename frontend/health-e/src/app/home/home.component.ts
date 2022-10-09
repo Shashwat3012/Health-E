@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
         duration: 1500,
 
       });
+      this.fetchPatientRequests();
     })
   }
 
@@ -103,7 +104,7 @@ export class ViewPatientInfoDetails implements OnInit {
     this.form.get('weight')!.setValue(this.data.weight);
     this.form.get('bloodgroup')!.setValue(this.data.bloodGroup);
     this.form.get('allergies')!.setValue(this.data.allergies);
-    this.form.get('diseases')!.setValue(this.data.diseases);
+    this.form.get('diseases')!.setValue(this.data.disease);
     this.form.get('injuryHistory')!.setValue(this.data.injuryHistory);
     this.form.get('medication')!.setValue(this.data.medication);
     this.form.get('nominee1Name')!.setValue(this.data.nominee1Name);
