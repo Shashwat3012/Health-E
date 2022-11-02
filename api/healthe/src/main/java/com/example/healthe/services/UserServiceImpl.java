@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -28,7 +29,8 @@ public class UserServiceImpl implements User{
     @Override
     public String registerUser(RegisterUserRequest userRequest) {
         String uuid = UUID.randomUUID().toString().substring(0, 6);
-        if(userRequest.getRole() == "Patient") {
+        System.out.println(userRequest.getRole());
+        if(Objects.equals(userRequest.getRole(), "Patient")) {
             userRepo.save(new com.example.healthe.entity.User(userRequest.getFirstName(),
                     userRequest.getLastName(), userRequest.getUserName(),
                     userRequest.getPassword(), userRequest.getRole(), uuid));
@@ -43,7 +45,7 @@ public class UserServiceImpl implements User{
 
     @Override
     public String loginUser(LoginUserRequest userRequest) {
-        if(userRequest.getRole() == "Patient") {
+        if(Objects.equals(userRequest.getRole(), "Patient")) {
             com.example.healthe.entity.User user =
                     userRepo.findByUsernameAndPassword(userRequest.getUserName(), userRequest.getPassword());
             if (user == null) {
