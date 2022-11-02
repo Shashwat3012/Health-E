@@ -54,7 +54,7 @@ public class UserServiceImpl implements User{
                 return user.getUuid();
             }
         }
-        else if(userRequest.getRole() == "Nominee"){
+        else if(Objects.equals(userRequest.getRole(), "Nominee")){
             PatientInfo pInfo = patientRepo.findByPatientsByNominee(userRequest.getPatientId(),
                                                                 userRequest.getNomineeName());
             if (pInfo == null) {
@@ -68,7 +68,7 @@ public class UserServiceImpl implements User{
             if (pInfo == null) {
                 return "User Not Found!";
             } else {
-                if(pInfo.getStatus() == "Approved") {
+                if(Objects.equals(pInfo.getStatus(), "Approved")) {
                     return "Successful Login";
                 }
                 else return "Status Pending";
