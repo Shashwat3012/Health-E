@@ -1,7 +1,7 @@
 <div>
     <mat-card class="header">
         <mat-toolbar style="background-color: #FFB200;">
-            <span *ngIf="role == 'Patient'">User Portal</span>
+            <span *ngIf="role == 'Patient'">User Portal : {{userId}}</span>
             <span *ngIf="role == 'Doctor'">Doctor Portal</span>
             <span *ngIf="role == 'Nominee'">Nominee Portal</span>
             <span *ngIf="role == 'Admin'">Admin Portal</span>

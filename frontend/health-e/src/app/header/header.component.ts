@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   role = sessionStorage.getItem('role');
+  userId = sessionStorage.getItem('userId');
   constructor(private router: Router) { }
 
   ngOnInit(): void {
