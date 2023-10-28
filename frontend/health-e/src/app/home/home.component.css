@@ -1,0 +1,33 @@
+.button {
+    width: 35%;
+    height: 25%;
+    /* margin-left: 18%;
+    margin-right: 2%; */
+    cursor: pointer;
+}
+
+.formClass {
+    display: flex;
+    flex-direction: column;
+}
+
+.formFieldClass {
+    width: 48%;
+}
+
+.formFieldClassText {
+    width: 98%;
+}
+
+table {
+    width: 100%;
+}
+
+td,
+th {
+    width: 20%;
+}
+
+/* mat-elevation-z8 {
+    width: 80%;
+} */

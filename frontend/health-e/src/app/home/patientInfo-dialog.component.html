@@ -1,0 +1,99 @@
+<div>
+    <form [formGroup]="form" class="formClass">
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+                <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName">
+                <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Date of Birth</mat-label>
+                <input type="date" matInput formControlName="dob">
+                <!-- <mat-icon matSuffix>invert_colors</mat-icon> -->
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Blood Group</mat-label>
+                <input matInput formControlName="bloodgroup">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Height</mat-label>
+                <input type="number" matInput formControlName="height">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Weight</mat-label>
+                <input type="number" matInput formControlName="weight">
+                <mat-icon matSuffix>invert_colors</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Allergies</mat-label>
+            <!-- <input matInput formControlName="allergies"> -->
+            <textarea matInput formControlName="allergies"></textarea>
+            <mat-icon matSuffix>masks</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Diseases</mat-label>
+            <!-- <input matInput formControlName="diseases"> -->
+            <textarea matInput formControlName="diseases"></textarea>
+            <mat-icon matSuffix>group_work</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Injury History</mat-label>
+            <!-- <input matInput formControlName="injuryhistory"> -->
+            <textarea matInput formControlName="injuryHistory"></textarea>
+            <mat-icon matSuffix>healing</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="formFieldClassText">
+            <mat-label>Medication</mat-label>
+            <!-- <input matInput formControlName="medication"> -->
+            <textarea matInput formControlName="medication"></textarea>
+            <mat-icon matSuffix>medication</mat-icon>
+        </mat-form-field>
+
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 1 Name</mat-label>
+                <input matInput formControlName="nominee1Name">
+                <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 1 Contact</mat-label>
+                <input matInput formControlName="nominee1Contact">
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 2 Name</mat-label>
+                <input matInput formControlName="nominee2Name">
+                <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field> &nbsp;
+            <mat-form-field appearance="outline" class="formFieldClass">
+                <mat-label>Nominee 2 Contact</mat-label>
+                <input matInput formControlName="nominee2Contact">
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <div style="display: flex;flex-direction: column;">
+            <div style="margin-left: 19%;">
+                <button mat-raised-button class="button" (click)="submit()">Submit</button> &nbsp;&nbsp;
+                <button mat-raised-button class="button" (click)="close()">Close</button>
+            </div>
+        </div>
+    </form>
+</div>

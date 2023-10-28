@@ -1,0 +1,79 @@
+<app-header></app-header>
+<div style="display: flex;flex-direction: column;">
+    <div style="display: flex;flex-direction: row;margin-top: 1%;margin-left: 10%;">
+        <div>
+            <mat-icon mat-fab style="float:right;height:60px;width:60px;font-size: 3rem;cursor:pointer;"
+                matTooltip="Request Data" matTooltipPosition="left" (click)="openDialog()">note_add</mat-icon>
+        </div>
+        <div>
+            <form [formGroup]="form" class="formClass">
+                <mat-form-field appearance="outline">
+                    <mat-label>Search Patient</mat-label>
+                    <input matInput formControlName="patientId">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field> &nbsp;
+            </form>
+            <!-- <div *ngIf="patientName != ''">
+                <span>Patient Name: {{patientName}}</span> &nbsp;
+                <span>Blood Group: {{bloodGroup}}</span> &nbsp;
+                <span>Height: {{height}}</span> &nbsp;
+                <span>Weight: {{weight}}</span> &nbsp;
+            </div> -->
+        </div>
+        <div style="margin-top: 2%;margin-left: 2%;">
+            <button mat-raised-button class="button" (click)="fetchPatient()" style="cursor:pointer;">Search By
+                Id</button>
+        </div>
+        <div style="margin-top: 2%;margin-left: 2%;">
+            <button mat-raised-button class="button" (click)="fetchPatientByDisease()" style="cursor:pointer;">Search By
+                Disease</button>
+        </div>
+    </div>
+
+    <div class="mat-elevation-z8" style="width:80%;margin-left: 10%;">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <caption><span>Requests from Doctor</span></caption>
+            <!-- ID Column -->
+            <ng-container matColumnDef="requestId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Request ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.requestId}} </td>
+            </ng-container>
+
+            <!-- Progress Column -->
+            <ng-container matColumnDef="patientId">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient ID</th>
+                <td mat-cell *matCellDef="let row"> {{row.patientId}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="reason">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Reason </th>
+                <td mat-cell *matCellDef="let row"> {{row.reason}} </td>
+            </ng-container>
+
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-icon matTooltip="View Patient Data" matTooltipPosition="right"
+                        (click)="viewPatientData(row.patientId,row.status)" style="cursor:pointer;">assessment
+                    </mat-icon>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row">
+            </tr>
+
+        </table>
+    </div>
+</div>

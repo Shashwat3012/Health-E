@@ -1,0 +1,42 @@
+.patient {
+    background-color: #002B5B;
+}
+
+.hospital {
+    background-color: #002B5B;
+}
+
+.example-button-row {
+    margin-left: 45%;
+    margin-top: 20%;
+}
+
+.login {
+    /* background-color: #8FE3CF; */
+    width: 30%;
+    margin-left: 38%;
+    margin-top: 2%;
+}
+
+.button {
+    margin-left: 15%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+.button1 {
+    margin-left: 3%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.formClass{
+    margin-left: 20%;
+}
+
+.mat-radio-checked {
+    color: purple;
+}
+
+.mat-radio-inner-circle {
+    background: purple;
+}

@@ -1,0 +1,9 @@
+.header{
+    background-color: #FFB200;
+    color: #002B5B;
+    height: 40%;
+}
+
+.example-spacer{
+    flex: 1 1 auto;
+}
